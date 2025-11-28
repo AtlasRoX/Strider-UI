@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/ghotc/Downloads/next-js-app-generation/app/auth/layout.tsx"],"sourcesContent":["import type { ReactNode } from \"react\"\n\nexport default function AuthLayout({ children }: { children: ReactNode }) {\n  return <div className=\"min-h-screen bg-muted/30\">{children}</div>\n}\n"],"names":[],"mappings":";;;;;;AAEe,SAAS,WAAW,EAAE,QAAQ,EAA2B;IACtE,qBAAO,6WAAC;QAAI,WAAU;kBAA4B;;;;;;AACpD"}}]
+}

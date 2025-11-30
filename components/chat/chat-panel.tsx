@@ -92,7 +92,14 @@ export function ChatPanel() {
     }
   }
 
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const formatTime = (date: Date) => {
+    if (!mounted) return ""
     return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
   }
 

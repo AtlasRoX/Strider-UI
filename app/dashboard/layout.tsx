@@ -26,7 +26,7 @@ export default async function DashboardLayout({
   return (
     <SidebarProvider>
       <ModalProvider>
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen bg-background" suppressHydrationWarning>
           <Sidebar
             user={{
               email: user.email,

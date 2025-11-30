@@ -3,7 +3,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 
 export default function LandingLayout({ children }: { children: ReactNode }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
       {children}
     </ThemeProvider>
   )

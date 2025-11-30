@@ -4,6 +4,7 @@ import { SearchBar } from "@/components/ui/search-bar"
 import { SearchDialog } from "@/components/ui/search-dialog"
 import { NotificationCenter } from "@/components/ui/notification-center"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { Logo } from "@/components/ui/logo"
 import { useSidebar } from "@/contexts/sidebar-context"
 
 export function TopNavbar() {
@@ -15,12 +16,14 @@ export function TopNavbar() {
       style={{ left: isMobile ? 0 : (collapsed ? 64 : sidebarWidth) }}
     >
       {/* Desktop Search */}
-      <div className="hidden md:flex flex-1 max-w-md">
+      <div className="hidden md:flex flex-1 max-w-3xl">
         <SearchBar placeholder="Search anything..." />
       </div>
 
-      {/* Mobile: Empty spacer */}
-      <div className="md:hidden flex-1" />
+      {/* Mobile: Logo Branding */}
+      <div className="md:hidden flex-1">
+        <Logo width={140} height={35} showTagline={false} />
+      </div>
 
       <div className="flex items-center gap-1 md:gap-2">
         {/* Mobile Search Dialog - Only visible on mobile */}

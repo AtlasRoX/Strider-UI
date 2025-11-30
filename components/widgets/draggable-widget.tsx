@@ -36,10 +36,10 @@ export function DraggableWidget({
         className,
       )}
     >
-      <div className="flex items-center justify-between px-4 py-3 bg-muted/30 border-b border-border">
-        <div className="flex items-center gap-2">
-          <GripVertical className="h-4 w-4 text-muted-foreground cursor-grab active:cursor-grabbing" />
-          <span className="text-sm font-medium">{title}</span>
+      <div className="flex items-center justify-between px-4 py-3 bg-muted/30 border-b border-border gap-2">
+        <div className="flex items-center gap-2 min-w-0 flex-1">
+          <GripVertical className="h-4 w-4 text-muted-foreground cursor-grab active:cursor-grabbing flex-shrink-0" />
+          <span className="text-sm font-medium truncate">{title}</span>
         </div>
         <div className="flex items-center gap-1">
           <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setExpanded(!expanded)}>

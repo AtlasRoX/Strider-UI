@@ -41,7 +41,7 @@ export default function WidgetsPage() {
     switch (type) {
       case "stats":
         return (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <StatsCard title="Users" value="1,234" change={5.2} icon={<Users className="h-4 w-4" />} />
             <StatsCard title="Revenue" value="$9,876" change={-2.1} icon={<DollarSign className="h-4 w-4" />} />
           </div>

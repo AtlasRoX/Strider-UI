@@ -1,2 +1,9 @@
+allowBuilds:
+  sharp: set this to true or false
 onlyBuiltDependencies:
   - sharp
+
+overrides:
+  react-is: "^19.0.0"
+  react: "^19.0.0"
+  react-dom: "^19.0.0"

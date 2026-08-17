@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///X:/09_Team%20ChronoSrider/Projects/sr/SR1%203011/StriderBoard-v1/app/auth/layout.tsx"],"sourcesContent":["import type { ReactNode } from \"react\"\r\n\r\nexport default function AuthLayout({ children }: { children: ReactNode }) {\r\n  return <div className=\"min-h-screen bg-muted/30\">{children}</div>\r\n}\r\n"],"names":[],"mappings":";;;;;;AAEe,SAAS,WAAW,EAAE,QAAQ,EAA2B;IACtE,qBAAO,6WAAC;QAAI,WAAU;kBAA4B;;;;;;AACpD"}}]
-}

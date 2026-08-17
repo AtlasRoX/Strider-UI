@@ -1,7 +1,8 @@
-"use client"
+'use client'
 
-import { LogOut, Settings, User } from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import * as React from 'react'
+import { LogOut, Settings, User } from 'lucide-react'
+import { Avatar } from '@/components/ui/avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,10 +10,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { createClient } from "@/lib/supabase/client"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
+} from '@/components/ui/dropdown-menu'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 interface UserMenuProps {
   user?: {
@@ -24,55 +24,56 @@ interface UserMenuProps {
 
 export function UserMenu({ user }: UserMenuProps) {
   const router = useRouter()
-  const initials =
-    user?.name
-      ?.split(" ")
-      .map((n) => n[0])
-      .join("") ||
-    user?.email?.[0]?.toUpperCase() ||
-    "U"
+  const userName = user?.name || 'User'
+  const userEmail = user?.email || ''
 
-  const handleSignOut = async () => {
-    const supabase = createClient()
-    await supabase.auth.signOut()
-    router.push("/")
+  const handleSignOut = () => {
+    router.push('/')
   }
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="flex items-center gap-2 p-1 rounded-full hover:bg-secondary/80 transition-micro">
-          <Avatar className="h-8 w-8">
-            <AvatarImage src={user?.avatar || "/placeholder.svg"} alt={user?.name || "User"} />
-            <AvatarFallback className="bg-primary text-primary-foreground text-sm font-medium">
-              {initials}
-            </AvatarFallback>
-          </Avatar>
+        <button
+          type="button"
+          className="flex items-center gap-2 p-0.5 rounded-full hover:ring-2 hover:ring-[var(--outline-focus)]/30 transition-all outline-none"
+          aria-label="User account menu"
+        >
+          <Avatar
+            src={user?.avatar}
+            label={userName}
+            size="sm"
+          />
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuLabel>
-          <div className="flex flex-col">
-            <span className="font-medium">{user?.name || "User"}</span>
-            <span className="text-xs text-muted-foreground">{user?.email}</span>
+          <div className="flex flex-col gap-0.5">
+            <span className="font-semibold text-xs text-[var(--ink-primary)]">{userName}</span>
+            {userEmail && (
+              <span className="text-[11px] font-normal text-[var(--ink-secondary)] truncate">
+                {userEmail}
+              </span>
+            )}
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>
-          <Link href="/dashboard/profile" className="flex items-center gap-2 cursor-pointer">
-            <User className="h-4 w-4" />
+        <DropdownMenuItem asChild prefix={<User className="size-3.5" />}>
+          <Link href="/dashboard/profile">
             Profile
           </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <Link href="/dashboard/settings" className="flex items-center gap-2 cursor-pointer">
-            <Settings className="h-4 w-4" />
+        <DropdownMenuItem asChild prefix={<Settings className="size-3.5" />}>
+          <Link href="/dashboard/settings">
             Settings
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={handleSignOut} className="text-destructive cursor-pointer">
-          <LogOut className="h-4 w-4 mr-2" />
+        <DropdownMenuItem
+          variant="destructive"
+          prefix={<LogOut className="size-3.5" />}
+          onClick={handleSignOut}
+        >
           Sign out
         </DropdownMenuItem>
       </DropdownMenuContent>

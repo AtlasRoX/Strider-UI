@@ -1,37 +1,69 @@
+'use client'
+
+import * as React from 'react'
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
-
 import { cn } from '@/lib/utils'
 import { Separator } from '@/components/ui/separator'
 
 const buttonGroupVariants = cva(
-  "flex w-fit items-stretch [&>*]:focus-visible:z-10 [&>*]:focus-visible:relative [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1 has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-r-md has-[>[data-slot=button-group]]:gap-2",
+  'inline-flex items-stretch [&>*]:focus-visible:z-10 [&>*]:focus-visible:relative',
   {
     variants: {
       orientation: {
-        horizontal:
-          '[&>*:not(:first-child)]:rounded-l-none [&>*:not(:first-child)]:border-l-0 [&>*:not(:last-child)]:rounded-r-none',
-        vertical:
-          'flex-col [&>*:not(:first-child)]:rounded-t-none [&>*:not(:first-child)]:border-t-0 [&>*:not(:last-child)]:rounded-b-none',
+        horizontal: 'flex-row',
+        vertical: 'flex-col',
+      },
+      attached: {
+        true: '',
+        false: 'gap-2',
+      },
+      fluid: {
+        true: 'w-full [&>*]:flex-1',
+        false: 'w-fit',
       },
     },
+    compoundVariants: [
+      {
+        orientation: 'horizontal',
+        attached: true,
+        className:
+          '[&>*:not(:first-child)]:rounded-l-none [&>*:not(:first-child)]:-ml-[1px] [&>*:not(:last-child)]:rounded-r-none',
+      },
+      {
+        orientation: 'vertical',
+        attached: true,
+        className:
+          '[&>*:not(:first-child)]:rounded-t-none [&>*:not(:first-child)]:-mt-[1px] [&>*:not(:last-child)]:rounded-b-none',
+      },
+    ],
     defaultVariants: {
       orientation: 'horizontal',
+      attached: true,
+      fluid: false,
     },
-  },
+  }
 )
+
+export interface ButtonGroupProps
+  extends React.ComponentProps<'div'>,
+    VariantProps<typeof buttonGroupVariants> {}
 
 function ButtonGroup({
   className,
-  orientation,
+  orientation = 'horizontal',
+  attached = true,
+  fluid = false,
   ...props
-}: React.ComponentProps<'div'> & VariantProps<typeof buttonGroupVariants>) {
+}: ButtonGroupProps) {
   return (
     <div
       role="group"
       data-slot="button-group"
       data-orientation={orientation}
-      className={cn(buttonGroupVariants({ orientation }), className)}
+      data-attached={attached ? 'true' : undefined}
+      data-fluid={fluid ? 'true' : undefined}
+      className={cn(buttonGroupVariants({ orientation, attached, fluid }), className)}
       {...props}
     />
   )
@@ -48,9 +80,10 @@ function ButtonGroupText({
 
   return (
     <Comp
+      data-slot="button-group-text"
       className={cn(
-        "bg-muted flex items-center gap-2 rounded-md border px-4 text-sm font-medium shadow-xs [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
-        className,
+        'bg-[var(--surface-muted)] text-[var(--ink-secondary)] flex items-center gap-2 rounded-md border border-[var(--outline-base)] px-3 text-sm font-medium shadow-xs select-none',
+        className
       )}
       {...props}
     />
@@ -67,8 +100,8 @@ function ButtonGroupSeparator({
       data-slot="button-group-separator"
       orientation={orientation}
       className={cn(
-        'bg-input relative !m-0 self-stretch data-[orientation=vertical]:h-auto',
-        className,
+        'bg-[var(--outline-base)] relative !m-0 self-stretch data-[orientation=vertical]:h-auto',
+        className
       )}
       {...props}
     />

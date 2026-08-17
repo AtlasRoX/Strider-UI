@@ -1,10 +1,9 @@
 import * as React from 'react'
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  MoreHorizontalIcon,
+  ChevronLeft,
+  ChevronRight,
+  MoreHorizontal,
 } from 'lucide-react'
-
 import { cn } from '@/lib/utils'
 import { Button, buttonVariants } from '@/components/ui/button'
 
@@ -52,13 +51,15 @@ function PaginationLink({
     <a
       aria-current={isActive ? 'page' : undefined}
       data-slot="pagination-link"
-      data-active={isActive}
+      data-active={isActive ? 'true' : undefined}
       className={cn(
         buttonVariants({
-          variant: isActive ? 'outline' : 'ghost',
+          variant: isActive ? 'solid' : 'ghost',
+          theme: isActive ? 'brand' : 'gray',
           size,
         }),
-        className,
+        'size-8 rounded-lg text-xs cursor-pointer',
+        className
       )}
       {...props}
     />
@@ -72,11 +73,11 @@ function PaginationPrevious({
   return (
     <PaginationLink
       aria-label="Go to previous page"
-      size="default"
-      className={cn('gap-1 px-2.5 sm:pl-2.5', className)}
+      size="sm"
+      className={cn('gap-1 px-2.5 size-auto h-8', className)}
       {...props}
     >
-      <ChevronLeftIcon />
+      <ChevronLeft className="size-3.5" />
       <span className="hidden sm:block">Previous</span>
     </PaginationLink>
   )
@@ -89,12 +90,12 @@ function PaginationNext({
   return (
     <PaginationLink
       aria-label="Go to next page"
-      size="default"
-      className={cn('gap-1 px-2.5 sm:pr-2.5', className)}
+      size="sm"
+      className={cn('gap-1 px-2.5 size-auto h-8', className)}
       {...props}
     >
       <span className="hidden sm:block">Next</span>
-      <ChevronRightIcon />
+      <ChevronRight className="size-3.5" />
     </PaginationLink>
   )
 }
@@ -107,10 +108,10 @@ function PaginationEllipsis({
     <span
       aria-hidden
       data-slot="pagination-ellipsis"
-      className={cn('flex size-9 items-center justify-center', className)}
+      className={cn('flex size-8 items-center justify-center text-[var(--ink-muted)]', className)}
       {...props}
     >
-      <MoreHorizontalIcon className="size-4" />
+      <MoreHorizontal className="size-4" />
       <span className="sr-only">More pages</span>
     </span>
   )

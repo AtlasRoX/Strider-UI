@@ -2,9 +2,9 @@
 
 import * as React from 'react'
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu'
-import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react'
-
+import { Check, ChevronRight, Circle } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { Kbd } from '@/components/ui/kbd'
 
 function ContextMenu({
   ...props
@@ -66,13 +66,15 @@ function ContextMenuSubTrigger({
       data-slot="context-menu-sub-trigger"
       data-inset={inset}
       className={cn(
-        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        className,
+        'flex cursor-pointer select-none items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs outline-none transition-colors duration-150',
+        'focus:bg-[var(--surface-muted)] focus:text-[var(--ink-primary)] data-[state=open]:bg-[var(--surface-muted)]',
+        'data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8',
+        className
       )}
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto" />
+      <ChevronRight className="ml-auto size-3.5 opacity-60" />
     </ContextMenuPrimitive.SubTrigger>
   )
 }
@@ -85,8 +87,10 @@ function ContextMenuSubContent({
     <ContextMenuPrimitive.SubContent
       data-slot="context-menu-sub-content"
       className={cn(
-        'bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] origin-(--radix-context-menu-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-lg',
-        className,
+        'z-50 min-w-[9rem] overflow-hidden rounded-xl border border-[var(--outline-base)] bg-[var(--surface-card)] p-1 text-[var(--ink-primary)] shadow-xl outline-none',
+        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
+        'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+        className
       )}
       {...props}
     />
@@ -102,8 +106,9 @@ function ContextMenuContent({
       <ContextMenuPrimitive.Content
         data-slot="context-menu-content"
         className={cn(
-          'bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--radix-context-menu-content-available-height) min-w-[8rem] origin-(--radix-context-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border p-1 shadow-md',
-          className,
+          'z-50 min-w-[9rem] overflow-hidden rounded-xl border border-[var(--outline-base)] bg-[var(--surface-card)] p-1 text-[var(--ink-primary)] shadow-xl outline-none',
+          'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
+          className
         )}
         {...props}
       />
@@ -115,10 +120,15 @@ function ContextMenuItem({
   className,
   inset,
   variant = 'default',
+  prefix,
+  shortcut,
+  children,
   ...props
-}: React.ComponentProps<typeof ContextMenuPrimitive.Item> & {
+}: Omit<React.ComponentProps<typeof ContextMenuPrimitive.Item>, 'prefix'> & {
   inset?: boolean
   variant?: 'default' | 'destructive'
+  prefix?: React.ReactNode
+  shortcut?: string
 }) {
   return (
     <ContextMenuPrimitive.Item
@@ -126,11 +136,20 @@ function ContextMenuItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        className,
+        'relative flex cursor-pointer select-none items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs outline-none transition-colors duration-150',
+        'focus:bg-[var(--surface-muted)] focus:text-[var(--ink-primary)]',
+        'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'data-[inset]:pl-8',
+        variant === 'destructive' &&
+          'text-[var(--rose-solid)] focus:bg-[var(--rose-subtle)]/40 focus:text-[var(--rose-solid)]',
+        className
       )}
       {...props}
-    />
+    >
+      {prefix && <span className="shrink-0 text-[var(--ink-muted)]">{prefix}</span>}
+      <span className="flex-1 truncate">{children}</span>
+      {shortcut && <ContextMenuShortcut combo={shortcut} />}
+    </ContextMenuPrimitive.Item>
   )
 }
 
@@ -144,15 +163,17 @@ function ContextMenuCheckboxItem({
     <ContextMenuPrimitive.CheckboxItem
       data-slot="context-menu-checkbox-item"
       className={cn(
-        "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        className,
+        'relative flex cursor-pointer select-none items-center rounded-lg py-1.5 pr-2 pl-8 text-xs outline-none transition-colors duration-150',
+        'focus:bg-[var(--surface-muted)] focus:text-[var(--ink-primary)]',
+        'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        className
       )}
       checked={checked}
       {...props}
     >
-      <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <span className="pointer-events-none absolute left-2.5 flex size-3.5 items-center justify-center">
         <ContextMenuPrimitive.ItemIndicator>
-          <CheckIcon className="size-4" />
+          <Check className="size-3.5 text-[var(--brand-solid)]" />
         </ContextMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -169,14 +190,16 @@ function ContextMenuRadioItem({
     <ContextMenuPrimitive.RadioItem
       data-slot="context-menu-radio-item"
       className={cn(
-        "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        className,
+        'relative flex cursor-pointer select-none items-center rounded-lg py-1.5 pr-2 pl-8 text-xs outline-none transition-colors duration-150',
+        'focus:bg-[var(--surface-muted)] focus:text-[var(--ink-primary)]',
+        'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        className
       )}
       {...props}
     >
-      <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <span className="pointer-events-none absolute left-2.5 flex size-3.5 items-center justify-center">
         <ContextMenuPrimitive.ItemIndicator>
-          <CircleIcon className="size-2 fill-current" />
+          <Circle className="size-2 fill-[var(--brand-solid)] text-[var(--brand-solid)]" />
         </ContextMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -196,8 +219,8 @@ function ContextMenuLabel({
       data-slot="context-menu-label"
       data-inset={inset}
       className={cn(
-        'text-foreground px-2 py-1.5 text-sm font-medium data-[inset]:pl-8',
-        className,
+        'px-2.5 py-1 text-[11px] font-semibold text-[var(--ink-secondary)] select-none data-[inset]:pl-8',
+        className
       )}
       {...props}
     />
@@ -211,7 +234,7 @@ function ContextMenuSeparator({
   return (
     <ContextMenuPrimitive.Separator
       data-slot="context-menu-separator"
-      className={cn('bg-border -mx-1 my-1 h-px', className)}
+      className={cn('-mx-1 my-1 h-px bg-[var(--outline-muted)]', className)}
       {...props}
     />
   )
@@ -219,17 +242,25 @@ function ContextMenuSeparator({
 
 function ContextMenuShortcut({
   className,
+  combo,
+  children,
   ...props
-}: React.ComponentProps<'span'>) {
+}: React.ComponentProps<'span'> & { combo?: string }) {
+  if (combo) {
+    return <Kbd combo={combo} size="sm" className={cn('ml-auto text-[10px]', className)} />
+  }
+
   return (
     <span
       data-slot="context-menu-shortcut"
       className={cn(
-        'text-muted-foreground ml-auto text-xs tracking-widest',
-        className,
+        'ml-auto text-[10px] tracking-widest text-[var(--ink-muted)]',
+        className
       )}
       {...props}
-    />
+    >
+      {children}
+    </span>
   )
 }
 

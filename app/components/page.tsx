@@ -145,9 +145,49 @@ import {
   OmniSearch,
   Confetti,
   ScoreBadge,
+  CopyButton,
+  Stack,
+  VStack,
+  HStack,
+  SimpleGrid,
+  Container,
+  Section,
+  Heading,
+  Text,
+  Blockquote,
+  Highlight,
+  DescriptionList,
+  QrCode,
+  NumberInput,
+  Editable,
+  CookieConsent,
+  ComparisonTable,
+  AutoForm,
+  ResponsiveDialog,
+  Sidebar,
+  SidebarProvider,
+  SidebarHeader,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarGroupContent,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+  SidebarMenuBadge,
+  SidebarTrigger,
+  SidebarRail,
+  SidebarInset,
+  SidebarSeparator,
 } from '@/components/ui'
+import { z } from 'zod'
 import { dialog } from '@/lib/dialog'
 import {
+  PanelLeft,
+  FolderGit2,
+  LayoutDashboard,
+  Inbox,
   ArrowRight,
   Layers,
   CheckCircle,
@@ -227,7 +267,7 @@ import type { ThemeColor, ComponentVariant } from '@/lib/theme-types'
 import { FONT_LIBRARY, listFonts } from '@/lib/fonts'
 
 const THEMES: ThemeColor[] = ['brand', 'gray', 'blue', 'emerald', 'amber', 'rose', 'violet']
-const VARIANTS: ComponentVariant[] = ['solid', 'outline', 'subtle', 'ghost']
+const VARIANTS: ComponentVariant[] = ['solid', 'subtle', 'outline', 'ghost', 'link']
 
 const SAMPLE_USERS = [
   { id: '1', name: 'Eleanor Vance', email: 'eleanor@strider.dev', role: 'Lead Architect', status: 'Active', team: 'Core' },
@@ -239,6 +279,9 @@ const SAMPLE_USERS = [
 
 export default function ComponentsShowcasePage() {
   const [selectedTab, setSelectedTab] = React.useState('atoms')
+  const [matrixButtonSize, setMatrixButtonSize] = React.useState<'xs' | 'sm' | 'md' | 'lg'>('sm')
+  const [matrixLoading, setMatrixLoading] = React.useState(false)
+  const [matrixDisabled, setMatrixDisabled] = React.useState(false)
   const [btnLoading, setBtnLoading] = React.useState(false)
   const [sliderVal, setSliderVal] = React.useState([45])
   const [selectedTheme, setSelectedTheme] = React.useState<ThemeColor>('brand')
@@ -275,6 +318,15 @@ export default function ComponentsShowcasePage() {
   const [inputDemoState, setInputDemoState] = React.useState<'normal' | 'error' | 'disabled'>('normal')
   const [inputDemoSize, setInputDemoSize] = React.useState<'sm' | 'md' | 'lg'>('md')
   const [selectedCurrency, setSelectedCurrency] = React.useState<'USD' | 'EUR' | 'GBP' | 'JPY'>('USD')
+  const [demoNumberValue, setDemoNumberValue] = React.useState(24)
+  const [demoEditableText, setDemoEditableText] = React.useState('Strider Edge Node 01')
+  const demoAutoFormSchema = React.useMemo(() => z.object({
+    fullName: z.string().min(2, "Full name must be at least 2 characters"),
+    email: z.string().email("Please provide a valid email address"),
+    role: z.enum(["admin", "developer", "designer", "viewer"]),
+    region: z.string().default("us-east-1"),
+    enable2FA: z.boolean().default(true),
+  }), [])
 
   // Test Imperative Dialog Confirm
   const handleTestConfirm = async () => {
@@ -473,21 +525,82 @@ export default function ComponentsShowcasePage() {
             <TabsContent value="atoms" className="flex flex-col gap-8 mt-6">
               {/* 2-Axis Button Matrix */}
               <Card>
-                <CardHeader>
-                  <CardTitle>2-Axis Button Matrix (Variant × Theme)</CardTitle>
-                  <CardDescription>
-                    Principle P4: Exactly two color axes with solid, outline, subtle, and ghost variants across 7 semantic themes.
-                  </CardDescription>
+                <CardHeader className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-[var(--outline-base)]/50">
+                  <div className="flex items-start gap-3">
+                    <div className="size-10 rounded-xl bg-[var(--brand-subtle)] text-[var(--brand-solid)] flex items-center justify-center font-bold shrink-0 shadow-2xs">
+                      <Layers className="size-5" />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <div className="flex items-center gap-2">
+                        <CardTitle className="text-base font-bold">2-Axis Button Matrix (Variant × Theme)</CardTitle>
+                        <Badge variant="subtle" theme="brand" size="sm">
+                          Principle P4
+                        </Badge>
+                      </div>
+                      <CardDescription className="text-xs">
+                        Two orthogonal styling axes: 5 visual weights (<code className="font-mono font-semibold">solid</code>, <code className="font-mono font-semibold">subtle</code>, <code className="font-mono font-semibold">outline</code>, <code className="font-mono font-semibold">ghost</code>, <code className="font-mono font-semibold">link</code>) across 7 OKLCH semantic palettes.
+                      </CardDescription>
+                    </div>
+                  </div>
+
+                  {/* Live Matrix Interactive Controls */}
+                  <div className="flex flex-wrap items-center gap-2 pt-2 lg:pt-0">
+                    <SegmentedControl
+                      size="sm"
+                      value={matrixButtonSize}
+                      onChange={(val) => setMatrixButtonSize(val as any)}
+                      options={[
+                        { label: 'XS', value: 'xs' },
+                        { label: 'SM', value: 'sm' },
+                        { label: 'MD', value: 'md' },
+                        { label: 'LG', value: 'lg' },
+                      ]}
+                    />
+
+                    <Button
+                      size="xs"
+                      variant={matrixLoading ? 'solid' : 'outline'}
+                      theme={matrixLoading ? 'brand' : 'gray'}
+                      onClick={() => setMatrixLoading(!matrixLoading)}
+                    >
+                      {matrixLoading ? 'Stop Loading' : 'Test Loading'}
+                    </Button>
+
+                    <Button
+                      size="xs"
+                      variant={matrixDisabled ? 'solid' : 'outline'}
+                      theme={matrixDisabled ? 'rose' : 'gray'}
+                      onClick={() => setMatrixDisabled(!matrixDisabled)}
+                    >
+                      {matrixDisabled ? 'Enable' : 'Disable'}
+                    </Button>
+                  </div>
                 </CardHeader>
-                <CardContent className="flex flex-col gap-6">
+
+                <CardContent className="flex flex-col gap-6 pt-6">
                   {VARIANTS.map((v) => (
-                    <div key={v} className="flex flex-col gap-2">
-                      <span className="text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">
-                        Variant: {v}
-                      </span>
+                    <div key={v} className="flex flex-col gap-2.5 p-3.5 rounded-2xl bg-[var(--surface-muted)]/30 border border-[var(--outline-base)]/40">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-primary)] font-mono flex items-center gap-1.5">
+                          <span className="size-2 rounded-full bg-[var(--brand-solid)]" />
+                          variant="{v}"
+                        </span>
+                        <span className="text-[11px] text-[var(--ink-muted)]">
+                          7 Color Tones
+                        </span>
+                      </div>
+
                       <div className="flex flex-wrap items-center gap-2.5">
                         {THEMES.map((t) => (
-                          <Button key={t} variant={v} theme={t} size="sm">
+                          <Button
+                            key={t}
+                            variant={v}
+                            theme={t}
+                            size={matrixButtonSize}
+                            loading={matrixLoading}
+                            disabled={matrixDisabled}
+                            onClick={() => toast.success(`Button clicked: variant="${v}" theme="${t}"`)}
+                          >
                             {t}
                           </Button>
                         ))}
@@ -499,8 +612,8 @@ export default function ComponentsShowcasePage() {
 
                   {/* Button Extras & Groups */}
                   <div className="flex flex-col gap-3">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">
-                      Button States, Icons & Attached Groups
+                    <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-muted)] font-mono">
+                      Button States, Icon Slots & Attached Groups
                     </span>
                     <div className="flex flex-wrap items-center gap-4">
                       <Button variant="solid" theme="brand" loading>
@@ -900,13 +1013,297 @@ export default function ComponentsShowcasePage() {
               {/* Page Scroll Progress Indicator */}
               <ScrollProgress theme="brand" height={3} showPercentage />
 
+              {/* NEW: Foundational Layout Primitives */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Foundational Layout Primitives (VStack, HStack, SimpleGrid, Container)</CardTitle>
+                  <CardDescription>
+                    Responsive layout builders enforcing OKLCH surface backgrounds, standard spacing scales, and automatic grid breakpoint wrapping.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex flex-col gap-6">
+                  <div className="flex flex-col gap-3">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">
+                      Responsive SimpleGrid with Auto-Wrapping
+                    </span>
+                    <SimpleGrid columns={{ sm: 1, md: 3 }} spacing={3}>
+                      <div className="p-4 rounded-xl border border-[var(--outline-base)] bg-[var(--surface-muted)] text-center text-xs font-bold text-[var(--ink-primary)]">
+                        Grid Column 1 (Auto-Fit)
+                      </div>
+                      <div className="p-4 rounded-xl border border-[var(--outline-base)] bg-[var(--surface-muted)] text-center text-xs font-bold text-[var(--ink-primary)]">
+                        Grid Column 2 (Auto-Fit)
+                      </div>
+                      <div className="p-4 rounded-xl border border-[var(--outline-base)] bg-[var(--surface-muted)] text-center text-xs font-bold text-[var(--ink-primary)]">
+                        Grid Column 3 (Auto-Fit)
+                      </div>
+                    </SimpleGrid>
+                  </div>
+
+                  <Separator />
+
+                  <div className="flex flex-col gap-3">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">
+                      HStack & VStack with Connected Dividers
+                    </span>
+                    <HStack spacing={4} justify="between" className="p-3.5 rounded-xl border border-[var(--outline-base)] bg-[var(--surface-card)]">
+                      <HStack spacing={3}>
+                        <div className="size-8 rounded-lg bg-[var(--brand-subtle)] text-[var(--brand-solid)] flex items-center justify-center font-bold text-xs">
+                          <Cpu className="size-4" />
+                        </div>
+                        <VStack spacing={0} align="start">
+                          <span className="text-xs font-bold text-[var(--ink-primary)]">Edge Node Microservice</span>
+                          <span className="text-[11px] text-[var(--ink-muted)]">us-east-1a • Latency 14ms</span>
+                        </VStack>
+                      </HStack>
+                      <Badge variant="subtle" theme="emerald" size="sm">Active</Badge>
+                    </HStack>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* NEW: Collapsible Sidebar & Application Shell */}
+              <Card>
+                <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[var(--outline-base)]/50">
+                  <div className="flex items-start gap-3">
+                    <div className="size-10 rounded-xl bg-[var(--brand-subtle)] text-[var(--brand-solid)] flex items-center justify-center font-bold shrink-0 shadow-2xs">
+                      <LayoutDashboard className="size-5" />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <div className="flex items-center gap-2">
+                        <CardTitle className="text-base font-bold">Sidebar & Application Shell (`components/ui/sidebar.tsx`)</CardTitle>
+                        <Badge variant="subtle" theme="brand" size="sm">
+                          Collapsible
+                        </Badge>
+                      </div>
+                      <CardDescription className="text-xs">
+                        Full enterprise application shell with collapsible states (<code className="font-mono font-semibold">⌘B</code>), active indicators, icon tooltips, and responsive sheets.
+                      </CardDescription>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <Badge variant="subtle" theme="emerald" dot pulse size="sm">
+                      Production Shell
+                    </Badge>
+                  </div>
+                </CardHeader>
+
+                <CardContent className="p-0 overflow-hidden rounded-b-2xl">
+                  <div className="h-[580px] w-full relative flex bg-[var(--surface-base)]">
+                    <SidebarProvider defaultOpen className="min-h-full h-full">
+                      <Sidebar collapsible="icon" className="border-r border-[var(--outline-base)]">
+                        <SidebarHeader className="h-14 border-b border-[var(--outline-base)]/50 px-3.5 group-data-[collapsible=icon]:px-0 flex flex-row items-center justify-between group-data-[collapsible=icon]:justify-center shrink-0">
+                          <div className="flex items-center gap-3 min-w-0 group-data-[collapsible=icon]:justify-center">
+                            <div className="size-9 rounded-xl bg-[var(--brand-solid)] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
+                              <Boxes className="size-4.5" />
+                            </div>
+                            <div className="flex flex-col truncate group-data-[collapsible=icon]:hidden">
+                              <span className="font-bold text-xs text-[var(--ink-primary)] truncate">Acme Cloud</span>
+                              <span className="text-[10px] text-[var(--ink-muted)] truncate">Enterprise Workspace</span>
+                            </div>
+                          </div>
+                        </SidebarHeader>
+
+                        <SidebarContent className="p-2 group-data-[collapsible=icon]:px-1">
+                          <SidebarGroup>
+                            <SidebarGroupLabel>Main Platform</SidebarGroupLabel>
+                            <SidebarGroupContent>
+                              <SidebarMenu>
+                                <SidebarMenuItem>
+                                  <SidebarMenuButton isActive tooltip="Dashboard">
+                                    <LayoutDashboard className="size-4 text-[var(--brand-solid)]" />
+                                    <span>Dashboard</span>
+                                  </SidebarMenuButton>
+                                  <SidebarMenuBadge>Live</SidebarMenuBadge>
+                                </SidebarMenuItem>
+
+                                <SidebarMenuItem>
+                                  <SidebarMenuButton tooltip="Repositories">
+                                    <FolderGit2 className="size-4 text-[var(--ink-muted)]" />
+                                    <span>Repositories</span>
+                                  </SidebarMenuButton>
+                                </SidebarMenuItem>
+
+                                <SidebarMenuItem>
+                                  <SidebarMenuButton tooltip="Security & Keys">
+                                    <ShieldCheck className="size-4 text-[var(--ink-muted)]" />
+                                    <span>Security Vault</span>
+                                  </SidebarMenuButton>
+                                </SidebarMenuItem>
+                              </SidebarMenu>
+                            </SidebarGroupContent>
+                          </SidebarGroup>
+
+                          <SidebarSeparator />
+
+                          <SidebarGroup>
+                            <SidebarGroupLabel>System Telemetry</SidebarGroupLabel>
+                            <SidebarGroupContent>
+                              <SidebarMenu>
+                                <SidebarMenuItem>
+                                  <SidebarMenuButton tooltip="Edge Nodes">
+                                    <Cpu className="size-4 text-[var(--ink-muted)]" />
+                                    <span>Edge Nodes</span>
+                                  </SidebarMenuButton>
+                                  <SidebarMenuBadge>96</SidebarMenuBadge>
+                                </SidebarMenuItem>
+
+                                <SidebarMenuItem>
+                                  <SidebarMenuButton tooltip="Settings">
+                                    <Settings className="size-4 text-[var(--ink-muted)]" />
+                                    <span>Cluster Settings</span>
+                                  </SidebarMenuButton>
+                                </SidebarMenuItem>
+                              </SidebarMenu>
+                            </SidebarGroupContent>
+                          </SidebarGroup>
+                        </SidebarContent>
+
+                        <SidebarFooter className="p-2 border-t border-[var(--outline-base)]/50 flex items-center justify-center shrink-0">
+                          <div className="flex items-center gap-2.5 p-1.5 rounded-xl bg-[var(--surface-muted)]/60 group-data-[collapsible=icon]:bg-transparent transition-colors w-full group-data-[collapsible=icon]:w-auto group-data-[collapsible=icon]:justify-center">
+                            <div className="size-9 rounded-full bg-[var(--brand-subtle)] text-[var(--brand-solid)] flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
+                              A
+                            </div>
+                            <div className="flex flex-col truncate group-data-[collapsible=icon]:hidden">
+                              <span className="font-semibold text-xs text-[var(--ink-primary)] truncate">Alex Developer</span>
+                              <span className="text-[10px] text-[var(--ink-muted)] truncate">alex@acme.corp</span>
+                            </div>
+                          </div>
+                        </SidebarFooter>
+                        <SidebarRail />
+                      </Sidebar>
+
+                      <SidebarInset className="flex-1 flex flex-col min-w-0 bg-[var(--surface-base)] overflow-y-auto">
+                        <header className="h-14 flex items-center justify-between px-4 border-b border-[var(--outline-base)] bg-[var(--surface-card)] shrink-0">
+                          <div className="flex items-center gap-3">
+                            <SidebarTrigger />
+                            <Separator orientation="vertical" className="h-4" />
+                            <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--ink-primary)]">
+                              <span className="text-[var(--ink-muted)]">Workspace</span>
+                              <span className="text-[var(--ink-muted)]">/</span>
+                              <span>Production Telemetry</span>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Badge variant="subtle" theme="emerald" size="sm">Operational</Badge>
+                          </div>
+                        </header>
+
+                        <div className="p-6 flex flex-col gap-6">
+                          {/* KPI Metrics */}
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <MetricCard
+                              title="Active Edge Nodes"
+                              value="128 / 128"
+                              change="+4 online"
+                              changeType="increase"
+                              theme="emerald"
+                            />
+                            <MetricCard
+                              title="Global P99 Latency"
+                              value="14.2 ms"
+                              change="-2.1 ms"
+                              changeType="increase"
+                              theme="brand"
+                            />
+                            <MetricCard
+                              title="Cluster Availability"
+                              value="99.98%"
+                              change="SLA Met"
+                              changeType="increase"
+                              theme="blue"
+                            />
+                          </div>
+
+                          {/* Interactive Area */}
+                          <div className="p-5 rounded-2xl border border-[var(--outline-base)] bg-[var(--surface-card)] shadow-2xs flex flex-col gap-3">
+                            <div className="flex items-center justify-between">
+                              <h4 className="text-sm font-bold text-[var(--ink-primary)]">Live Cluster Node Stream</h4>
+                              <Badge variant="outline" theme="gray" size="sm">Realtime SSE</Badge>
+                            </div>
+                            <p className="text-xs text-[var(--ink-secondary)] leading-relaxed">
+                              Toggle the sidebar using the collapse button above or press <Kbd size="sm">⌘B</Kbd>. The sidebar collapses smoothly to icon mode with animated transitions, preserving tooltip flyouts and badge counters.
+                            </p>
+                          </div>
+                        </div>
+                      </SidebarInset>
+                    </SidebarProvider>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* NEW: Typographic Hierarchy & Highlights */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Typographic Scale, Headings & Highlights</CardTitle>
+                  <CardDescription>
+                    Typographic primitives with fluid OKLCH text tones and semantic highlight markers.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex flex-col gap-6">
+                  <div className="flex flex-col gap-2">
+                    <Heading as="h3" size="lg">Fluid Heading Component (as="h3" size="lg")</Heading>
+                    <Text size="sm" tone="secondary">
+                      Standard paragraph text primitive with <Highlight theme="brand">OKLCH Brand Marker</Highlight> and <Highlight theme="emerald">Verified Badge</Highlight> inline tokens.
+                    </Text>
+                  </div>
+
+                  <Blockquote theme="brand">
+                    "Designing iconic, reliable user interfaces with strict architectural contracts guarantees rock-solid frontend velocity."
+                  </Blockquote>
+                </CardContent>
+              </Card>
+
+              {/* NEW: CopyButton & Pure SVG QrCode */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>CopyButton (1-Click Clipboard Copier)</CardTitle>
+                    <CardDescription>
+                      Zero-boilerplate copy button with animated icon swap, built-in tooltip, and toast notification.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex flex-col gap-4">
+                    <div className="flex items-center justify-between p-3 rounded-xl border border-[var(--outline-base)] bg-[var(--surface-muted)]">
+                      <code className="text-xs font-mono font-bold text-[var(--ink-primary)]">
+                        pnpm add @radix-ui/react-dialog lucide-react
+                      </code>
+                      <CopyButton value="pnpm add @radix-ui/react-dialog lucide-react" />
+                    </div>
+
+                    <div className="flex items-center justify-between p-3 rounded-xl border border-[var(--outline-base)] bg-[var(--surface-muted)]">
+                      <span className="text-xs font-medium text-[var(--ink-primary)]">
+                        API Secret: sk_live_89127839120938
+                      </span>
+                      <CopyButton value="sk_live_89127839120938" successMessage="API Secret copied safely!" />
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>QrCode Generator & Downloader</CardTitle>
+                    <CardDescription>
+                      Pure SVG QR Code matrix with download action, custom styling, and zero external binary dependencies.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex flex-col items-center justify-center p-4">
+                    <QrCode
+                      value="https://github.com/AtlasRoX/StriderBoard-v1"
+                      size={130}
+                      showDownload
+                    />
+                  </CardContent>
+                </Card>
+              </div>
+
               {/* Tour Component Container */}
               <Tour
                 open={isTourOpen}
                 onClose={() => setIsTourOpen(false)}
                 onComplete={() => toast.success('Tour completed! Welcome to Strider UI.')}
                 steps={[
-                  { title: 'Welcome to Strider UI', description: 'Explore over 100+ enterprise React 19 and Radix UI components with 2-axis OKLCH color palettes.' },
+                  { title: 'Welcome to Strider UI', description: 'Explore over 160+ enterprise React 19 and Radix UI components with 2-axis OKLCH color palettes.' },
                   { title: 'Interactive Analytics', description: 'Inspect Sparklines, Gauges, Heatmaps, and Recharts graph suites in the Charts tab.' },
                   { title: 'Imperative Services', description: 'Trigger promise-based dialogs, alerts, and toasts anywhere without state boilerplate.' },
                 ]}
@@ -1390,6 +1787,77 @@ export default function ComponentsShowcasePage() {
                   </CardContent>
                 </Card>
               </div>
+
+              {/* NEW: NumberInput & Editable Text */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>NumberInput (Numeric Stepper with P5 Contract)</CardTitle>
+                    <CardDescription>
+                      Precision stepper input with keyboard navigation, min/max clamps, and P5 labeling contract.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex flex-col gap-4">
+                    <NumberInput
+                      label="Allocated Server Replicas"
+                      description="Auto-scales compute instances across regions."
+                      value={demoNumberValue}
+                      onChange={setDemoNumberValue}
+                      min={1}
+                      max={128}
+                      step={1}
+                      required
+                    />
+
+                    <div className="p-3 rounded-xl border border-[var(--outline-base)] bg-[var(--surface-muted)] text-xs text-[var(--ink-secondary)]">
+                      Current Value: <strong className="text-[var(--ink-primary)]">{demoNumberValue} nodes</strong>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Editable (Click-to-Edit Inline Text)</CardTitle>
+                    <CardDescription>
+                      Inline text editor with commit/cancel buttons and keyboard shortcuts (Enter to save, Esc to cancel).
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex flex-col gap-4">
+                    <div className="p-4 rounded-xl border border-[var(--outline-base)] bg-[var(--surface-card)] flex flex-col gap-2">
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--ink-muted)]">
+                        Workspace Cluster Name (Click to edit)
+                      </span>
+                      <Editable
+                        value={demoEditableText}
+                        onSubmit={(val) => {
+                          setDemoEditableText(val)
+                          toast.success(`Renamed to "${val}"`)
+                        }}
+                        className="text-base font-bold text-[var(--ink-primary)]"
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* NEW: Automatic Form Generator from Zod Schema */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>AutoForm (Zero-Boilerplate Zod-to-Strider Form)</CardTitle>
+                  <CardDescription>
+                    Automatically generates P5-compliant inputs, selects, and switches directly from any Zod schema with client-side validation.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <AutoForm
+                    schema={demoAutoFormSchema}
+                    onSubmit={async (data) => {
+                      toast.success(`Profile saved: ${data.fullName} (${data.role})`)
+                    }}
+                    submitLabel="Save Organization Profile"
+                  />
+                </CardContent>
+              </Card>
             </TabsContent>
 
             {/* TAB 3: OVERLAYS & DIALOGS */}
@@ -1531,6 +1999,42 @@ export default function ComponentsShowcasePage() {
                   </CardContent>
                 </Card>
               </div>
+
+              {/* NEW: ResponsiveDialog (Desktop Modal ↔ Mobile Vaul Drawer) */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>ResponsiveDialog (`components/ui/responsive-dialog.tsx`)</CardTitle>
+                  <CardDescription>
+                    Adaptive modal rendering a Radix Dialog on desktop and a smooth Vaul Drawer on mobile touch viewports.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex flex-wrap items-center gap-4">
+                  <ResponsiveDialog
+                    title="Invite Team Member"
+                    description="Send an invitation link with granular role permissions to your workspace."
+                    trigger={
+                      <Button variant="solid" theme="brand">
+                        Open Responsive Dialog
+                      </Button>
+                    }
+                  >
+                    <div className="flex flex-col gap-3 py-2">
+                      <Input label="Email Address" placeholder="colleague@company.com" required />
+                      <Select
+                        label="Project Role"
+                        options={[
+                          { label: 'Administrator', value: 'admin' },
+                          { label: 'Developer', value: 'developer' },
+                          { label: 'Viewer', value: 'viewer' },
+                        ]}
+                      />
+                      <Button variant="solid" theme="brand" className="mt-2" onClick={() => toast.success('Invitation sent!')}>
+                        Send Invitation
+                      </Button>
+                    </div>
+                  </ResponsiveDialog>
+                </CardContent>
+              </Card>
             </TabsContent>
 
             {/* TAB 4: DATA DISPLAY & TABLES */}
@@ -2013,6 +2517,75 @@ export async function GET() {
                       </p>
                     </div>
                   </MasonryGrid>
+                </CardContent>
+              </Card>
+
+              {/* NEW: Key-Value DescriptionList Property Cards */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>DescriptionList (Key-Value Spec Card)</CardTitle>
+                    <CardDescription>
+                      Structured property list with 1-click copy buttons and responsive columns.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <DescriptionList
+                      columns={2}
+                      items={[
+                        { label: 'Cluster Domain', value: 'api.acme-corp.internal', copyable: true },
+                        { label: 'Cloud Zone', value: 'us-east-1a (N. Virginia)' },
+                        { label: 'Runtime Node Engine', value: 'Node.js 22 / Bun 1.1' },
+                        { label: 'API Gateway Health', value: '99.998% Uptime' },
+                      ]}
+                    />
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>DescriptionList (Striped Variant)</CardTitle>
+                    <CardDescription>
+                      Zebra-striped spec card for invoice receipts, tax summaries, and security profiles.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <DescriptionList
+                      layout="striped"
+                      items={[
+                        { label: 'Invoice Reference', value: 'INV-2026-8910', copyable: true },
+                        { label: 'Billing Period', value: 'August 01 - August 31, 2026' },
+                        { label: 'Subtotal (Net)', value: '$14,850.00' },
+                        { label: 'Payment Gateway', value: 'Stripe ACH Transfer' },
+                      ]}
+                    />
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* NEW: Multi-Tier Feature Comparison Matrix */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>ComparisonTable (Multi-Tier Feature Matrix)</CardTitle>
+                  <CardDescription>
+                    Feature matrix across subscription tiers with categorized rows, tooltips, and boolean checkmarks.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="p-0 sm:p-4">
+                  <ComparisonTable
+                    tiers={[
+                      { id: 'starter', name: 'Starter', price: '$29/mo', description: 'Small teams' },
+                      { id: 'pro', name: 'Pro Plan', price: '$79/mo', popular: true, description: 'Scale SaaS', ctaLabel: 'Upgrade to Pro' },
+                      { id: 'enterprise', name: 'Enterprise', price: '$299/mo', description: 'Dedicated SLA' },
+                    ]}
+                    features={[
+                      { name: 'Active Team Members', category: 'Core Capabilities', values: { starter: 'Up to 5', pro: 'Unlimited', enterprise: 'Unlimited' } },
+                      { name: 'Monthly API Requests', category: 'Core Capabilities', values: { starter: '50,000', pro: '1,000,000', enterprise: 'Unlimited' } },
+                      { name: 'Custom Domain SSL', tooltip: 'Automatic Let’s Encrypt certificate renewal', category: 'Security & Networking', values: { starter: false, pro: true, enterprise: true } },
+                      { name: 'Dedicated Edge Isolated Nodes', category: 'Security & Networking', values: { starter: false, pro: false, enterprise: true } },
+                      { name: '24/7 SLA Priority Support', category: 'Support & Services', values: { starter: false, pro: true, enterprise: true } },
+                    ]}
+                  />
                 </CardContent>
               </Card>
             </TabsContent>

@@ -1,0 +1,32 @@
+# CURSOR RULES: STRIDER UI DESIGN SYSTEM CONSTITUTION
+
+You are developing in a project powered by the Strider UI Design System.
+When given any UI prompt, you MUST follow this sequence:
+1. ANALYZE STRIDER UI: Check `@/components/ui/index.ts` and `REGISTRY.md` for existing components.
+2. FORMULATE STRIDER PLAN: Map all requested UI features to Strider UI primitives before writing code.
+3. EXECUTE: Write code exclusively importing from `@/components/ui` and `@/lib/dialog`.
+
+Core Rules:
+1. COMPONENT IMPORTS:
+   Always import UI components from `@/components/ui`. Never use other UI libraries.
+
+2. TWO-AXIS STYLING (P4):
+   - `variant`: 'solid' | 'outline' | 'subtle' | 'ghost' | 'link'
+   - `theme`: 'brand' | 'gray' | 'blue' | 'emerald' | 'amber' | 'rose' | 'violet'
+   - Never use semantic intents (danger, primary) or raw tailwind color classes.
+   - For custom containers, use OKLCH CSS variables: `bg-[var(--surface-card)]`, `border-[var(--outline-base)]`, `text-[var(--ink-primary)]`.
+
+3. P5 UNIFORM FORM INPUTS:
+   Pass `label`, `description`, `error`, `required`, `prefix`, `suffix` directly on the input component:
+   `<Input label="Email" error={errors.email?.message} required prefix={<Mail className="size-4" />} />`
+
+4. P8 SELECTION FAMILY:
+   Use `Select` for single values, `MultiSelect` for multiple tags, `Combobox` for searchable filtered selection.
+
+5. P9 IMPERATIVE DIALOGS:
+   Use `await dialog.confirm()`, `await dialog.danger()`, `await dialog.prompt()` from `@/lib/dialog` instead of building custom modal state.
+
+6. CRISP ENGINEERING ICONS (P11):
+   Use `lucide-react` engineering icons (Bot, Cpu, Layers, Terminal, Sliders, Code2, Boxes, Zap, Star). Never use sparkles or magic wands.
+
+Reference `AGENTS.md` and `DESIGN_SYSTEM.md` for full component specifications.

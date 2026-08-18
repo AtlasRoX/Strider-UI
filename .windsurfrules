@@ -1,0 +1,10 @@
+# WINDSURF & CASCADE RULES: STRIDER UI DESIGN SYSTEM
+
+1. Always import UI components from `@/components/ui`. Never import or install external UI libraries.
+2. Follow 2-Axis styling (`variant` + `theme`) strictly. No `color="primary"` or `intent="danger"`.
+3. Use OKLCH CSS variables (`var(--surface-*)`, `var(--ink-*)`, `var(--outline-*)`, `var(--<theme>-*)`).
+4. Follow the P5 uniform form contract: pass `label`, `description`, `error`, and `required` directly to inputs.
+5. Use P8 Selection Family: `Select` (single), `MultiSelect` (tags), `Combobox` (searchable).
+6. Use P9 imperative dialogs: `dialog.confirm()`, `dialog.danger()`, `dialog.prompt()` from `@/lib/dialog`.
+7. Use crisp Lucide engineering icons (Bot, Cpu, Layers, Terminal, Sliders, Code2, Boxes, Zap). Never use sparkles/magic wands.
+8. Refer to `AGENTS.md` and `DESIGN_SYSTEM.md` for full component specifications.

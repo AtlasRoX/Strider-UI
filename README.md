@@ -4,33 +4,36 @@
 [![Next.js 16](https://img.shields.io/badge/Next.js-16.0.0-black.svg)](https://nextjs.org/)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4.0.0-38bdf8.svg)](https://tailwindcss.com/)
 [![Radix UI](https://img.shields.io/badge/Radix_UI-Primitives-darkviolet.svg)](https://www.radix-ui.com/)
-[![Components Count](https://img.shields.io/badge/Components-157+-emerald.svg)](./REGISTRY.md)
+[![Components Count](https://img.shields.io/badge/Components-160+-emerald.svg)](./REGISTRY.md)
 [![Design System Spec](https://img.shields.io/badge/Design_System-P1--P15_OKLCH-indigo.svg)](./DESIGN_SYSTEM.md)
 
-**StriderBoard / Strider UI** is a full-stack, enterprise-grade component architecture and design system built for modern SaaS platforms. It ships with **157+ accessible React 19 / Radix UI components**, unified **two-axis OKLCH color palettes**, zero-boilerplate imperative dialog services, interactive charts, developer vaults, and AI copilot interfaces.
+**StriderBoard / Strider UI** is a full-stack, enterprise-grade component architecture and design system built for modern SaaS platforms. It ships with **160+ accessible React 19 / Radix UI components**, unified **two-axis OKLCH color palettes**, zero-boilerplate imperative dialog services, interactive charts, developer vaults, AI copilot interfaces, and a complete **AI Agent Constitution Ecosystem** (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.cursorrules`, `.windsurfrules`).
 
 ---
 
 ## 📑 Table of Contents
 
 1. [Quickstart (Run Locally)](#1-quickstart-run-locally)
-2. [Using Strider UI in Your Other Projects](#2-using-strider-ui-in-your-other-projects)
+2. [Instant 1-Command Project Setup (Bootstrap Any Workspace)](#2-instant-1-command-project-setup-bootstrap-any-workspace)
+3. [How to Instruct Your AI Coding Agent (Analyze ➔ Plan ➔ Build)](#3-how-to-instruct-your-ai-coding-agent-analyze--plan--build)
+4. [Using Strider UI in Your Other Projects (Manual Setup)](#4-using-strider-ui-in-your-other-projects-manual-setup)
    - [Step 1: Install Peer Dependencies](#step-1-install-peer-dependencies)
    - [Step 2: Copy Component & Utility Files](#step-2-copy-component--utility-files)
    - [Step 3: Configure Tailwind CSS v4 & OKLCH Tokens](#step-3-configure-tailwind-css-v4--oklch-tokens)
    - [Step 4: Wrap Root Layout with Provider](#step-4-wrap-root-layout-with-provider)
-3. [How to Instruct Your AI Coding Agent](#3-how-to-instruct-your-ai-coding-agent)
-4. [Strict DO's and DON'Ts Matrix](#4-strict-dos-and-donts-matrix)
-5. [Key Component Usage Recipes](#5-key-component-usage-recipes)
+5. [Developer CLI Tools & Automation](#5-developer-cli-tools--automation)
+6. [Strict DO's and DON'Ts Matrix](#6-strict-dos-and-donts-matrix)
+7. [Key Component Usage Recipes](#7-key-component-usage-recipes)
    - [2-Axis Buttons & Badges](#1-2-axis-buttons--badges)
-   - [P5 Uniform Form Controls](#2-p5-uniform-form-controls)
-   - [Imperative Dialogs & Modals](#3-imperative-dialogs--modals)
-   - [Enterprise Data Table & Data Grids](#4-enterprise-data-table--data-grids)
-   - [Kanban Workflow Board & Roadmap Gantt](#5-kanban-workflow-board--roadmap-gantt)
-   - [AI Copilot Input & Model Selector](#6-ai-copilot-input--model-selector)
-   - [Metric Cards & Visualizations](#7-metric-cards--visualizations)
-6. [Complete 157-Component Catalog](#6-complete-157-component-catalog)
-7. [Documentation Reference Index](#7-documentation-reference-index)
+   - [P5 Uniform Form Controls & AutoForm](#2-p5-uniform-form-controls--autoform)
+   - [Imperative Dialogs & Responsive Dialog](#3-imperative-dialogs--responsive-dialog)
+   - [Global Command Palette (Cmd+K)](#4-global-command-palette-cmdk)
+   - [Enterprise Data Table & Data Grids](#5-enterprise-data-table--data-grids)
+   - [Kanban Workflow Board & Roadmap Gantt](#6-kanban-workflow-board--roadmap-gantt)
+   - [AI Copilot Input & Model Selector](#7-ai-copilot-input--model-selector)
+   - [Metric Cards & Visualizations](#8-metric-cards--visualizations)
+8. [Complete 160-Component Catalog](#8-complete-160-component-catalog)
+9. [Documentation Reference Index](#9-documentation-reference-index)
 
 ---
 
@@ -50,38 +53,76 @@ pnpm install
 pnpm dev
 ```
 
-- **Dashboard**: [`http://localhost:3000`](http://localhost:3000)
-- **Component Showcase (All 157+ UI Controls)**: [`http://localhost:3000/components`](http://localhost:3000/components)
+- **Component Showcase (All 160+ UI Controls)**: [`http://localhost:3000/components`](http://localhost:3000/components)
+- **Global Command Palette**: Press **`Cmd+K`** or **`Ctrl+K`** anywhere to search components and copy code snippets.
 
 ---
 
-## 2. Using Strider UI in Your Other Projects
+## 2. Instant 1-Command Project Setup (Bootstrap Any Workspace)
 
-You can use Strider UI across any Next.js 15/16, React 19, or Vite application.
+When starting any new Next.js or React application, you can configure the entire Strider UI ecosystem in seconds with the built-in initializer:
+
+```bash
+# In your StriderBoard directory (or via npx tsx):
+pnpm run setup:project <path-to-your-target-project>
+```
+
+This automated script performs the following tasks:
+1. ✅ Copies all `components/ui/` and `lib/` folders to your project.
+2. ✅ Injects the OKLCH token layer and dark-mode styles into `app/globals.css`.
+3. ✅ Ingests all AI Agent Constitutions (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.cursorrules`, `.windsurfrules`, `.github/copilot-instructions.md`).
+4. ✅ Updates your target `package.json` with all required peer dependencies.
+
+---
+
+## 3. How to Instruct Your AI Coding Agent (Analyze ➔ Plan ➔ Build)
+
+When you clone Strider UI into a new project, copy and paste this **Master Prompt** into your AI coding assistant (**Antigravity, Claude Code, Cursor, Windsurf, Codex, ChatGPT**):
+
+```markdown
+I want to build [Describe Your Application / Feature, e.g. "a Multi-Tenant SaaS Workspace for API Keys, Webhooks, Billing, and Team Members"].
+
+STRICT INSTRUCTIONS:
+1. FIRST, analyze the Strider UI components in `@/components/ui` and read `AGENTS.md`.
+2. SECOND, formulate a step-by-step implementation plan that explicitly maps every view, table, form, metric, and modal to existing Strider UI components and OKLCH tokens.
+3. THIRD, after presenting the plan, build the UI strictly following the Strider UI design system (2-Axis variant/theme styling, P5 uniform form labeling, and imperative dialog helpers). Do not install other UI libraries or invent custom color classes.
+```
+
+### 🧭 The AI Agent Execution Lifecycle
+
+```
+Step 1: Reconnaissance ➔ Step 2: Architecture Plan ➔ Step 3: 100% Compliant Execution
+```
+
+1. **Phase 1: Strider UI Reconnaissance**: The agent scans `@/components/ui/index.ts` and `app/globals.css` to identify all existing components and OKLCH color tokens.
+2. **Phase 2: Architectural Mapping Plan**: The agent formulates a structured implementation plan mapping your application features to exact Strider primitives (`MetricCard`, `DataTable`, `AutoForm`, `ResponsiveDialog`, `dialog.confirm()`).
+3. **Phase 3: 100% Compliant Execution**: The agent writes clean, accessible React 19 code importing exclusively from `@/components/ui` and `@/lib/dialog`.
+
+---
+
+## 4. Using Strider UI in Your Other Projects (Manual Setup)
+
+You can also manually integrate Strider UI into any Next.js 15/16, React 19, or Vite application:
 
 ### Step 1: Install Peer Dependencies
-
-In your new or existing project, install the core dependencies:
 
 ```bash
 # Core Primitives & Styling
 pnpm add @radix-ui/react-accordion @radix-ui/react-alert-dialog @radix-ui/react-aspect-ratio @radix-ui/react-avatar @radix-ui/react-checkbox @radix-ui/react-collapsible @radix-ui/react-context-menu @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-hover-card @radix-ui/react-menubar @radix-ui/react-navigation-menu @radix-ui/react-popover @radix-ui/react-progress @radix-ui/react-radio-group @radix-ui/react-scroll-area @radix-ui/react-select @radix-ui/react-separator @radix-ui/react-slider @radix-ui/react-slot @radix-ui/react-switch @radix-ui/react-tabs @radix-ui/react-toast @radix-ui/react-toggle @radix-ui/react-toggle-group @radix-ui/react-tooltip
 
 # Icons, Charts, Animation & Utilities
-pnpm add lucide-react recharts sonner class-variance-authority clsx tailwind-merge cmdk vaul input-otp
+pnpm add lucide-react recharts sonner class-variance-authority clsx tailwind-merge cmdk vaul input-otp next-themes zod date-fns react-day-picker
 ```
 
 ---
 
 ### Step 2: Copy Component & Utility Files
 
-Copy the two core directories from this repository into your project:
-
 ```
 Your-Project/
 ├── components/
-│   └── ui/              <-- Copy all files from StriderBoard/components/ui/
-├── lib/                 <-- Copy all files from StriderBoard/lib/
+│   └── ui/              <-- Copy from StriderBoard/components/ui/
+├── lib/                 <-- Copy from StriderBoard/lib/
 └── app/
     └── globals.css      <-- Add token layer (see Step 3)
 ```
@@ -99,11 +140,6 @@ Add the OKLCH theme token layer to your `app/globals.css`:
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  /* Typography */
-  --font-google-sans: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-sans: var(--font-google-sans);
-  --font-mono: 'Geist Mono', ui-monospace, monospace;
-
   /* Surface Layers */
   --surface-base: oklch(0.99 0 0);
   --surface-card: oklch(1 0 0);
@@ -117,7 +153,6 @@ Add the OKLCH theme token layer to your `app/globals.css`:
   --ink-secondary: oklch(0.42 0.02 185);
   --ink-muted: oklch(0.62 0.01 185);
   --ink-inverse: oklch(0.99 0 0);
-  --ink-disabled: oklch(0.75 0 0);
 
   /* Outline Layers (Borders) */
   --outline-base: oklch(0.90 0.005 185);
@@ -127,7 +162,7 @@ Add the OKLCH theme token layer to your `app/globals.css`:
   /* 7 Two-Axis Theme Palettes */
   --brand-solid: oklch(0.55 0.05 185);
   --brand-subtle: oklch(0.94 0.02 185);
-  --brand-ink: oklch(0.42 0.06 185);
+  --brand-ink: oklch(0.35 0.04 185);
 
   --gray-solid: oklch(0.20 0.01 185);
   --gray-subtle: oklch(0.95 0 0);
@@ -135,31 +170,23 @@ Add the OKLCH theme token layer to your `app/globals.css`:
 
   --blue-solid: oklch(0.55 0.18 245);
   --blue-subtle: oklch(0.95 0.03 245);
-  --blue-ink: oklch(0.45 0.18 245);
+  --blue-ink: oklch(0.35 0.12 245);
 
   --emerald-solid: oklch(0.56 0.17 152);
   --emerald-subtle: oklch(0.95 0.03 152);
-  --emerald-ink: oklch(0.42 0.17 152);
+  --emerald-ink: oklch(0.35 0.12 152);
 
   --amber-solid: oklch(0.70 0.17 75);
   --amber-subtle: oklch(0.96 0.04 75);
-  --amber-ink: oklch(0.50 0.18 75);
+  --amber-ink: oklch(0.38 0.12 75);
 
   --rose-solid: oklch(0.55 0.20 25);
   --rose-subtle: oklch(0.96 0.03 25);
-  --rose-ink: oklch(0.48 0.20 25);
+  --rose-ink: oklch(0.40 0.14 25);
 
   --violet-solid: oklch(0.56 0.20 290);
   --violet-subtle: oklch(0.96 0.03 290);
-  --violet-ink: oklch(0.48 0.20 290);
-
-  /* Corner Radii */
-  --radius-xs: 0.25rem;
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-full: 9999px;
+  --violet-ink: oklch(0.38 0.14 290);
 }
 
 .dark {
@@ -167,31 +194,11 @@ Add the OKLCH theme token layer to your `app/globals.css`:
   --surface-card: oklch(0.16 0.01 185);
   --surface-muted: oklch(0.20 0.015 185);
   --surface-subtle: oklch(0.24 0.02 185);
-  --surface-overlay: oklch(0.18 0.01 185);
-
   --ink-primary: oklch(0.98 0 0);
   --ink-secondary: oklch(0.75 0.01 185);
-  --ink-muted: oklch(0.52 0.01 185);
-  --ink-inverse: oklch(0.12 0.01 185);
-
   --outline-base: oklch(0.26 0.01 185);
-  --outline-muted: oklch(0.21 0.005 185);
-  --outline-focus: oklch(0.65 0.06 185);
-
   --brand-solid: oklch(0.60 0.06 185);
   --brand-subtle: oklch(0.22 0.03 185);
-  --gray-solid: oklch(0.85 0 0);
-  --gray-subtle: oklch(0.22 0 0);
-  --blue-solid: oklch(0.60 0.18 245);
-  --blue-subtle: oklch(0.22 0.05 245);
-  --emerald-solid: oklch(0.60 0.17 152);
-  --emerald-subtle: oklch(0.22 0.04 152);
-  --amber-solid: oklch(0.72 0.17 75);
-  --amber-subtle: oklch(0.24 0.05 75);
-  --rose-solid: oklch(0.58 0.20 25);
-  --rose-subtle: oklch(0.22 0.04 25);
-  --violet-solid: oklch(0.62 0.20 290);
-  --violet-subtle: oklch(0.23 0.05 290);
 }
 ```
 
@@ -199,7 +206,7 @@ Add the OKLCH theme token layer to your `app/globals.css`:
 
 ### Step 4: Wrap Root Layout with Provider
 
-In `app/layout.tsx`, wrap children with `<StriderUIProvider>` to enable tooltips, theme toggling, imperative dialogs, and toast notifications:
+Wrap children with `<StriderUIProvider>` to automatically enable tooltips, theme toggling, imperative dialog services, toast notifications, the `Cmd+K` command palette, and the Agentation feedback overlay:
 
 ```tsx
 // app/layout.tsx
@@ -211,7 +218,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen bg-[var(--surface-base)] text-[var(--ink-primary)] font-sans antialiased">
-        <StriderUIProvider defaultTheme="system">
+        <StriderUIProvider defaultTheme="light" enableSystem toastPosition="bottom-right">
           {children}
         </StriderUIProvider>
       </body>
@@ -222,26 +229,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 ---
 
-## 3. How to Instruct Your AI Coding Agent
+## 5. Developer CLI Tools & Automation
 
-Whenever you prompt an AI coding assistant (**Antigravity, Cursor, Windsurf, Claude Code, Codex, ChatGPT**), reference [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md):
+StriderBoard includes built-in CLI scripts to accelerate everyday development:
 
-### Recommended System Prompt / `.cursorrules` / `CLAUDE.md` snippet:
+```bash
+# 1. Bootstrap any external project with Strider UI:
+pnpm run setup:project <path-to-target-project>
 
-```markdown
-You are building and modifying user interfaces in this codebase using the Strider UI Design System.
-Always adhere to DESIGN_SYSTEM.md:
-1. Always use 2-Axis styling: `variant` ('solid'|'outline'|'subtle'|'ghost'|'link') + `theme` ('brand'|'gray'|'blue'|'emerald'|'amber'|'rose'|'violet'). Never use semantic intent props like color="primary" or intent="danger".
-2. All form inputs MUST follow the P5 Uniform Labeling Contract: provide `label`, `description`, `error`, and `required` directly to the input component.
-3. For confirmations, prompts, or dangerous actions, use imperative `dialog.confirm()`, `dialog.danger()`, or `dialog.prompt()` from `@/lib/dialog` instead of building custom modal state.
-4. Follow the dedicated P8 Selection family: `Select` for single fixed items, `MultiSelect` for multiple tagged pills, `Combobox` for searchable autocompletes.
-5. Use OKLCH CSS variables (`var(--surface-*)`, `var(--ink-*)`, `var(--outline-*)`, `var(--<theme>-*)`) instead of raw hex values or non-standard Tailwind colors.
-6. NO AI-sloppy icons: NEVER use `Sparkles`, magic wands, or generic glitter stars for features or AI tools. Use crisp, purposeful domain icons (`Bot`, `Cpu`, `Layers`, `Terminal`, `Sliders`, `Code2`, `Boxes`, `Zap`, `Star`).
+# 2. Scaffold a new component strictly adhering to P1–P15:
+pnpm run new:component <component-name> [--type=atom|form]
+
+# 3. Scan components/ui/ and regenerate registry.json & docs:
+pnpm run registry:build
 ```
 
 ---
 
-## 4. Strict DO's and DON'Ts Matrix
+## 6. Strict DO's and DON'Ts Matrix
 
 | Category | ❌ NEVER DO THIS | ✅ ALWAYS DO THIS |
 | :--- | :--- | :--- |
@@ -260,7 +265,7 @@ Always adhere to DESIGN_SYSTEM.md:
 
 ---
 
-## 5. Key Component Usage Recipes
+## 7. Key Component Usage Recipes
 
 ### 1. 2-Axis Buttons & Badges
 ```tsx
@@ -290,104 +295,71 @@ import { Plus, Trash2, CheckCircle2 } from 'lucide-react'
 
 ---
 
-### 2. P5 Uniform Form Controls
+### 2. P5 Uniform Form Controls & AutoForm
 ```tsx
-import { 
-  Input, 
-  PasswordInput, 
-  Select, 
-  MultiSelect, 
-  Combobox, 
-  DatePicker, 
-  Checkbox, 
-  Switch 
-} from '@/components/ui'
+import { Input, PasswordInput, Select, MultiSelect, AutoForm } from '@/components/ui'
+import { z } from 'zod'
 
+// Standard P5 Input Contract:
 <Input
   label="Project Subdomain"
   placeholder="e.g. acme-edge"
   description="Allocates your dedicated edge URL."
   required
-  clearable
 />
 
-<PasswordInput
-  label="API Secret Key"
-  placeholder="Enter cryptographic secret..."
-  showStrength
-  required
-/>
+// Auto-generated Form from Zod Schema:
+const profileSchema = z.object({
+  fullName: z.string().min(2, "Name is required"),
+  role: z.enum(["admin", "developer", "viewer"]),
+  notifications: z.boolean().default(true),
+})
 
-<Select
-  label="Edge Cluster Location"
-  options={[
-    { label: 'US East (N. Virginia)', value: 'us-east-1' },
-    { label: 'EU West (Frankfurt)', value: 'eu-west-1' },
-    { label: 'AP South (Singapore)', value: 'ap-south-1' },
-  ]}
-  defaultValue="us-east-1"
-/>
-
-<MultiSelect
-  label="Security Tags"
-  options={[
-    { label: 'SOC2 Type II', value: 'soc2' },
-    { label: 'HIPAA Compliant', value: 'hipaa' },
-    { label: 'PCI-DSS', value: 'pci' },
-  ]}
-  defaultValue={['soc2']}
-/>
-
-<Checkbox
-  label="Enable Automatic SSL Renewal"
-  description="Renews certificates 30 days prior to expiry."
-  theme="brand"
-  defaultChecked
-/>
-
-<Switch
-  label="Maintenance Mode"
-  description="Temporarily routes public traffic to maintenance page."
-  theme="amber"
+<AutoForm
+  schema={profileSchema}
+  onSubmit={async (data) => await saveUser(data)}
+  submitLabel="Save Profile"
 />
 ```
 
 ---
 
-### 3. Imperative Dialogs & Modals
+### 3. Imperative Dialogs & Responsive Dialog
 ```tsx
 import { dialog } from '@/lib/dialog'
-import { toast } from 'sonner'
+import { ResponsiveDialog, Button, Input } from '@/components/ui'
 
-// Confirmation Dialog
+// Imperative Modal Confirmation:
 const confirmed = await dialog.confirm({
   title: 'Publish Production Release?',
-  message: 'This will push version 2.4.0 to all 24 edge nodes.',
+  message: 'This will push version 2.4.0 to all edge nodes.',
   confirmLabel: 'Publish Now',
-  theme: 'brand',
 })
 
-// Destructive Action Modal
-const purged = await dialog.danger({
-  title: 'Purge Redis Cache?',
-  message: 'All ephemeral cache data will be permanently destroyed.',
-  confirmLabel: 'Purge Cache',
-})
-
-// Interactive Prompt Modal
-const res = await dialog.prompt({
-  title: 'Rename Workspace',
-  message: 'Enter the new title for this environment.',
-  fields: [
-    { name: 'name', label: 'Workspace Name', type: 'text', placeholder: 'e.g. Acme Production', required: true },
-  ],
-  confirmLabel: 'Save Title',
-})
+// Adaptive Desktop Dialog / Mobile Vaul Drawer:
+<ResponsiveDialog
+  title="Invite Team Member"
+  description="Send an invitation link with granular role permissions."
+  trigger={<Button variant="solid" theme="brand">Invite Member</Button>}
+>
+  <Input label="Email Address" placeholder="colleague@company.com" required />
+</ResponsiveDialog>
 ```
 
 ---
 
-### 4. Enterprise Data Table & Data Grids
+### 4. Global Command Palette (Cmd+K)
+```tsx
+import { GlobalCommandPalette } from '@/components/ui'
+
+// Automatically mounted in <StriderUIProvider>, or trigger manually:
+const [open, setOpen] = React.useState(false)
+<GlobalCommandPalette open={open} onOpenChange={setOpen} />
+```
+
+---
+
+### 5. Enterprise Data Table & Data Grids
 ```tsx
 import { DataTable } from '@/components/ui'
 
@@ -400,7 +372,6 @@ import { DataTable } from '@/components/ui'
   ]}
   data={userRecords}
   selectable
-  searchable
   pagination={{
     page: 1,
     pageSize: 10,
@@ -412,7 +383,7 @@ import { DataTable } from '@/components/ui'
 
 ---
 
-### 5. Kanban Workflow Board & Roadmap Gantt
+### 6. Kanban Workflow Board & Roadmap Gantt
 ```tsx
 import { KanbanBoard, RoadmapGantt } from '@/components/ui'
 
@@ -430,31 +401,30 @@ import { KanbanBoard, RoadmapGantt } from '@/components/ui'
 
 ---
 
-### 6. AI Copilot Input & Model Selector
+### 7. AI Copilot Input & Model Selector
 ```tsx
 import { AiPromptInput, ModelSelector } from '@/components/ui'
 
 <AiPromptInput
   placeholder="Ask Strider AI to scaffold a component or refactor code..."
   modelSelector={<ModelSelector defaultValue="claude-3-5-sonnet" />}
-  onSend={(prompt, files) => handleAiStream(prompt, files)}
-  showAttachments
+  onSubmit={(prompt, attachments) => handleAiStream(prompt, attachments)}
   maxTokens={8192}
 />
 ```
 
 ---
 
-### 7. Metric Cards & Visualizations
+### 8. Metric Cards & Visualizations
 ```tsx
 import { MetricCard, Gauge, Sparkline } from '@/components/ui'
 
 <MetricCard
   title="Monthly Recurring Revenue"
   value="$148,250"
-  change={18.4}
-  changeLabel="vs last quarter"
-  trend="up"
+  change="+18.4%"
+  changeType="increase"
+  changePeriod="vs last month"
   theme="brand"
   sparklineData={[40, 55, 62, 78, 90, 120, 148]}
 />
@@ -471,14 +441,15 @@ import { MetricCard, Gauge, Sparkline } from '@/components/ui'
 
 ---
 
-## 6. Complete 157-Component Catalog
+## 8. Complete 167-Component Catalog
 
 All components are directly exported from `@/components/ui`. See [`REGISTRY.md`](./REGISTRY.md) for full metadata:
 
-- **Core Atoms**: `Button`, `ButtonGroup`, `Badge`, `Avatar`, `AvatarGroup`, `Icon`, `Kbd`, `Label`, `Logo`, `PulseBadge`, `ScoreBadge`, `Separator` (`Divider`), `Skeleton`, `Snippet`, `Spinner`, `LoadingIndicator`, `LoadingText`, `Toggle`, `ToggleGroup`, `SplitButton`
-- **Form Controls**: `Input`, `PasswordInput`, `PasswordValidator`, `Textarea`, `Checkbox`, `Switch`, `RadioGroup`, `Radio`, `Slider`, `Select`, `MultiSelect`, `Combobox`, `DatePicker`, `TimePicker`, `Duration`, `FileUploader`, `ColorPicker`, `TagInput`, `AiPromptInput`, `SignaturePad`, `PhoneInput`, `CurrencyInput`, `CreditCardInput`, `CronPicker`, `Rating`, `SegmentedControl`, `InputOTP`, `InputGroup`, `MentionInput`, `MultiEmailInput`, `Captcha`, `FormControl`
-- **Overlays & Dialogs**: `Dialog`, `AlertDialog`, `Sheet`, `Drawer` (`BottomSheet`), `DropdownMenu`, `ContextMenu`, `Menubar`, `Popover`, `Tooltip`, `HoverCard`, `Tour`, `MediaLightbox`, `KeyboardShortcutsDialog`
-- **Data Display**: `Card`, `DataTable`, `Table`, `Accordion`, `Tabs`, `Timeline`, `EmptyState`, `DiffViewer`, `JsonTree`, `Dock`, `DocumentPreview`, `MasonryGrid`, `PivotTable`, `VirtualList`, `OrgChartTree`, `PricingTable`, `KbdShortcutList`, `Collapsible`, `AspectRatio`, `CodeBlock`, `Carousel`, `Pagination`, `Resizable`, `ScrollArea`, `ScrollProgress`, `SectionHeader`, `PageHeader`, `Stepper`, `Tree`, `Field`, `Item`
+- **Layout & Typographic Primitives**: `Container`, `Section`, `Stack`, `VStack`, `HStack`, `SimpleGrid`, `Heading`, `Text`, `Blockquote`, `Highlight`, `Card`, `AspectRatio`, `Separator` (`Divider`), `ScrollArea`, `Resizable`, `SectionHeader`, `PageHeader`, `MasonryGrid`, `Dock`
+- **Core Atoms & Utilities**: `Button`, `ButtonGroup`, `Badge`, `Avatar`, `AvatarGroup`, `CopyButton`, `QrCode`, `CookieConsent`, `Icon`, `Kbd`, `Label`, `Logo`, `PulseBadge`, `ScoreBadge`, `Skeleton`, `Snippet`, `Spinner`, `LoadingIndicator`, `LoadingText`, `Toggle`, `ToggleGroup`, `SplitButton`
+- **Form Controls (P5 Contract)**: `Input`, `PasswordInput`, `NumberInput`, `Editable`, `PasswordValidator`, `Textarea`, `Checkbox`, `Switch`, `RadioGroup`, `Radio`, `Slider`, `Select`, `MultiSelect`, `Combobox`, `DatePicker`, `TimePicker`, `Duration`, `FileUploader`, `ColorPicker`, `TagInput`, `AiPromptInput`, `SignaturePad`, `PhoneInput`, `CurrencyInput`, `CreditCardInput`, `CronPicker`, `Rating`, `SegmentedControl`, `InputOTP`, `InputGroup`, `MentionInput`, `MultiEmailInput`, `Captcha`, `FormControl`, `AutoForm`
+- **Overlays & Dialogs**: `Dialog`, `AlertDialog`, `Sheet`, `Drawer` (`BottomSheet`), `DropdownMenu`, `ContextMenu`, `Menubar`, `Popover`, `Tooltip`, `HoverCard`, `Tour`, `MediaLightbox`, `KeyboardShortcutsDialog`, `ResponsiveDialog`, `GlobalCommandPalette`
+- **Data Display & Tables**: `DataTable`, `PivotTable`, `ComparisonTable`, `DescriptionList`, `Table`, `Accordion`, `Tabs`, `Timeline`, `EmptyState`, `DiffViewer`, `JsonTree`, `DocumentPreview`, `VirtualList`, `OrgChartTree`, `PricingTable`, `KbdShortcutList`, `Collapsible`, `CodeBlock`, `Carousel`, `Pagination`, `ScrollProgress`, `Stepper`, `Tree`, `Field`, `Item`
 - **Charts & Visualizations**: `ChartContainer`, `ChartTooltip`, `ChartLegend`, `Sparkline`, `BarList`, `Gauge`, `Heatmap`, `FunnelChart`, `Treemap`, `RoadmapGantt`, `Progress`, `CircularProgress`, `Trend`, `MetricCard`, `MetricCompare`
 - **Security & DevTools**: `ApiKeyManager`, `ActiveSessions`, `TwoFactorSetup`, `AuditLogStream`, `WebhookTester`, `ServiceStatusGrid`, `LogViewer`, `TerminalEmulator`, `ContrastChecker`, `FilterBuilder`, `FacetFilter`, `MarkdownEditor`, `Watermark`, `PaletteGenerator`, `PipelineStep`
 - **Collaboration & Media**: `CommentThread`, `NotificationCenter`, `NotificationPreferences`, `OmniSearch`, `MessageBubble`, `AudioPlayer`, `Confetti`, `ImageCompare`, `TopList`, `UserMenu`, `ModelSelector`
@@ -486,15 +457,18 @@ All components are directly exported from `@/components/ui`. See [`REGISTRY.md`]
 
 ---
 
-## 7. Documentation Reference Index
+## 9. Documentation Reference Index
 
 | Document | Purpose |
 | :--- | :--- |
-| [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) | **Master Unified Specification**: Complete rulebook combining principles P1–P15, token layers, DO's/DONT's, and AI coding agent guidelines. |
-| [`REGISTRY.md`](./REGISTRY.md) | **Component Tabular Index**: Detailed directory of all 157 components, imports, descriptions, and npm dependencies. |
-| [`PHILOSOPHY.md`](./PHILOSOPHY.md) | **Generative Architectural Principles**: Deep-dive rationale behind API design, color orthogonality, and accessibility contracts. |
-| [`CONTEXT.md`](./CONTEXT.md) | **Canonical Vocabulary**: Standardized terminology for composition levels, slot naming, and lifecycle states. |
-| [`AGENTATION.md`](./AGENTATION.md) | **Visual AI Feedback Loop**: Instructions for using the in-browser visual annotation toolbar with AI coding agents. |
+| [`AGENTS.md`](./AGENTS.md) | **Universal AI Agent Constitution**: The mandatory 3-phase workflow (`Analyze ➔ Plan ➔ Build`) and rulebook for all AI coding assistants. |
+| [`CLAUDE.md`](./CLAUDE.md) | **Claude Code Configuration**: Native instructions for Claude Code CLI. |
+| [`GEMINI.md`](./GEMINI.md) | **Antigravity / Gemini Kernel**: System kernel and operating rules for Antigravity agents. |
+| [`.cursorrules`](./.cursorrules) | **Cursor IDE Rules**: Auto-loaded instructions for Cursor Composer. |
+| [`.windsurfrules`](./.windsurfrules) | **Windsurf Rules**: Configuration for Windsurf / Cascade AI agent. |
+| [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) | **Master Unified Specification**: Complete rulebook combining principles P1–P15, token layers, DO's/DONT's. |
+| [`REGISTRY.md`](./REGISTRY.md) | **Component Tabular Index**: Directory of all 160 components, imports, and dependencies. |
+| [`AGENTATION.md`](./AGENTATION.md) | **Visual AI Feedback Loop**: Instructions for in-browser visual annotation for AI coding agents. |
 | [`registry.json`](./registry.json) | **Shadcn CLI Registry**: Official JSON registry schema for automated CLI component installation. |
 
 ---

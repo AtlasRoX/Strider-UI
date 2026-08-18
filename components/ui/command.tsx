@@ -146,7 +146,7 @@ function CommandItem({
   shortcut,
   children,
   ...props
-}: React.ComponentProps<typeof CommandPrimitive.Item> & {
+}: Omit<React.ComponentProps<typeof CommandPrimitive.Item>, 'prefix'> & {
   prefix?: React.ReactNode
   shortcut?: string
 }) {

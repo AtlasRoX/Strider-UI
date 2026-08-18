@@ -6,6 +6,7 @@ import { TooltipProvider } from '@radix-ui/react-tooltip'
 import { Toaster } from '@/components/ui/sonner'
 import { DialogProvider } from '@/lib/dialog'
 import { AgentationToolbar } from '@/components/ui/agentation'
+import { GlobalCommandPalette } from '@/components/ui/global-command-palette'
 
 export interface StriderUIProviderProps {
   children: React.ReactNode
@@ -19,12 +20,14 @@ export interface StriderUIProviderProps {
   toastPosition?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'top-center' | 'bottom-center'
   /** Enable visual feedback toolbar for AI coding agents (defaults to true in dev) */
   enableAgentation?: boolean
+  /** Enable global Cmd+K command palette (defaults to true) */
+  enableCommandPalette?: boolean
 }
 
 /**
  * StriderUIProvider
  * The foundational root provider for Strider UI applications.
- * Mounts the Theme Engine, Global Tooltip Provider, Imperative Dialog Service, Toaster, and Agentation Feedback Toolbar.
+ * Mounts the Theme Engine, Global Tooltip Provider, Imperative Dialog Service, Toaster, Agentation Feedback Toolbar, and Global Command Palette.
  */
 export function StriderUIProvider({
   children,
@@ -33,6 +36,7 @@ export function StriderUIProvider({
   tooltipDelayDuration = 200,
   toastPosition = 'bottom-right',
   enableAgentation = true,
+  enableCommandPalette = true,
 }: StriderUIProviderProps) {
   return (
     <NextThemesProvider
@@ -46,6 +50,7 @@ export function StriderUIProvider({
           {children}
           <Toaster position={toastPosition} richColors />
           {enableAgentation && <AgentationToolbar />}
+          {enableCommandPalette && <GlobalCommandPalette />}
         </DialogProvider>
       </TooltipProvider>
     </NextThemesProvider>

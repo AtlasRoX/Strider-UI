@@ -7,7 +7,7 @@
       "name": "accordion",
       "type": "registry:ui",
       "title": "Accordion",
-      "description": "Collapsible interactive accordion sections with smooth height animations.",
+      "description": "Accordion component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-accordion",
         "lucide-react"
@@ -25,7 +25,7 @@
       "name": "active-sessions",
       "type": "registry:ui",
       "title": "Active Sessions",
-      "description": "Security device session manager with geolocation, browser badges, and remote revocation.",
+      "description": "Active Sessions component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -45,7 +45,7 @@
       "name": "agentation",
       "type": "registry:ui",
       "title": "Agentation",
-      "description": "Visual feedback loop and component annotation overlay for AI coding agents.",
+      "description": "Visual annotation & feedback toolbar for AI coding agents (Claude Code, Antigravity, Cursor).",
       "dependencies": [
         "agentation"
       ],
@@ -62,7 +62,7 @@
       "name": "ai-prompt-input",
       "type": "registry:ui",
       "title": "Ai Prompt Input",
-      "description": "Multi-modal AI prompt composer with token counters, attachment chips, model pill selector, and streaming state.",
+      "description": "Ai Prompt Input component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -81,9 +81,8 @@
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert",
-      "description": "Contextual feedback banner supporting 4 visual variants across 7 OKLCH semantic themes.",
+      "description": "Alert component for Strider UI design system.",
       "dependencies": [
-        "class-variance-authority",
         "lucide-react"
       ],
       "registryDependencies": [],
@@ -99,7 +98,7 @@
       "name": "alert-dialog",
       "type": "registry:ui",
       "title": "Alert Dialog",
-      "description": "Modal confirmation dialog for destructive or high-consequence user actions.",
+      "description": "Alert Dialog component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-alert-dialog"
       ],
@@ -118,7 +117,7 @@
       "name": "api-key-manager",
       "type": "registry:ui",
       "title": "Api Key Manager",
-      "description": "Secret key management vault with masked reveal, scope badges, expiration dates, and key generation.",
+      "description": "Api Key Manager component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -139,7 +138,7 @@
       "name": "aspect-ratio",
       "type": "registry:ui",
       "title": "Aspect Ratio",
-      "description": "Maintains desired aspect ratio for media elements and responsive embeds.",
+      "description": "Aspect Ratio component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-aspect-ratio"
       ],
@@ -156,7 +155,7 @@
       "name": "audio-player",
       "type": "registry:ui",
       "title": "Audio Player",
-      "description": "Waveform and scrubbing audio player with playback speed, volume controls, and track meta.",
+      "description": "Audio Player component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -175,7 +174,7 @@
       "name": "audit-log-stream",
       "type": "registry:ui",
       "title": "Audit Log Stream",
-      "description": "Immutable SOC2 compliance security log stream with expandable JSON metadata and severity tags.",
+      "description": "Audit Log Stream component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -192,13 +191,40 @@
       ]
     },
     {
+      "name": "auto-form",
+      "type": "registry:ui",
+      "title": "Auto Form",
+      "description": "Generates fully accessible, P5-compliant Strider UI forms directly from a Zod schema.",
+      "dependencies": [
+        "sonner",
+        "zod"
+      ],
+      "registryDependencies": [
+        "button",
+        "checkbox",
+        "date-picker",
+        "input",
+        "password-input",
+        "select",
+        "spinner",
+        "switch",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "components/ui/auto-form.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/auto-form.tsx"
+        }
+      ]
+    },
+    {
       "name": "avatar",
       "type": "registry:ui",
       "title": "Avatar",
-      "description": "Polymorphic avatar with automated initials calculation, deterministic color hashing, and status dots.",
+      "description": "Renders multiple avatars overlapping with an optional limit and \"+N\" overflow bubble.",
       "dependencies": [
-        "@radix-ui/react-avatar",
-        "class-variance-authority"
+        "@radix-ui/react-avatar"
       ],
       "registryDependencies": [],
       "files": [
@@ -213,10 +239,9 @@
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
-      "description": "Status badge supporting 2-axis theme tokens, pulsing live indicators, copyable chips, and remove actions.",
+      "description": "Badge component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-slot",
-        "class-variance-authority",
         "lucide-react",
         "sonner"
       ],
@@ -233,7 +258,7 @@
       "name": "banner",
       "type": "registry:ui",
       "title": "Banner",
-      "description": "Full-width announcement bar with call-to-action buttons and dismiss triggers.",
+      "description": "Banner component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -250,7 +275,7 @@
       "name": "bar-list",
       "type": "registry:ui",
       "title": "Bar List",
-      "description": "Horizontal metric bar list for ranking items with proportional fill tracks and value labels.",
+      "description": "Bar List component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -265,7 +290,7 @@
       "name": "breadcrumb",
       "type": "registry:ui",
       "title": "Breadcrumb",
-      "description": "Accessible breadcrumb component hierarchy with dropdown ellipsis support.",
+      "description": "Shorthand breadcrumb navigation component mirroring Frappe-UI's <Breadcrumbs :items=\"[...]\"/>.",
       "dependencies": [
         "@radix-ui/react-slot",
         "lucide-react"
@@ -283,7 +308,7 @@
       "name": "breadcrumb-nav",
       "type": "registry:ui",
       "title": "Breadcrumb Nav",
-      "description": "Semantic breadcrumb navigation path with custom separators and active item styling.",
+      "description": "Breadcrumb Nav component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -300,10 +325,9 @@
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
-      "description": "2-axis button matrix supporting solid, outline, subtle, and ghost variants across 7 semantic OKLCH themes.",
+      "description": "Button component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-slot",
-        "class-variance-authority",
         "lucide-react"
       ],
       "registryDependencies": [],
@@ -319,10 +343,9 @@
       "name": "button-group",
       "type": "registry:ui",
       "title": "Button Group",
-      "description": "Cohesive segmented grouping container for connected or spaced button collections.",
+      "description": "Button Group component for Strider UI design system.",
       "dependencies": [
-        "@radix-ui/react-slot",
-        "class-variance-authority"
+        "@radix-ui/react-slot"
       ],
       "registryDependencies": [
         "separator"
@@ -339,7 +362,7 @@
       "name": "calendar",
       "type": "registry:ui",
       "title": "Calendar",
-      "description": "Interactive date selection grid with range picker, localized month navigation, and disabled dates.",
+      "description": "Calendar component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "react-day-picker"
@@ -359,7 +382,7 @@
       "name": "captcha",
       "type": "registry:ui",
       "title": "Captcha",
-      "description": "Interactive bot verification challenge control with honeypot security check.",
+      "description": "Captcha component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -378,10 +401,8 @@
       "name": "card",
       "type": "registry:ui",
       "title": "Card",
-      "description": "Container surface with modular header, title, description, content, and footer regions.",
-      "dependencies": [
-        "class-variance-authority"
-      ],
+      "description": "Card component for Strider UI design system.",
+      "dependencies": [],
       "registryDependencies": [],
       "files": [
         {
@@ -395,7 +416,7 @@
       "name": "carousel",
       "type": "registry:ui",
       "title": "Carousel",
-      "description": "Touch-friendly responsive carousel slider with dot indicators, autoplay, and navigation arrows.",
+      "description": "Carousel component for Strider UI design system.",
       "dependencies": [
         "embla-carousel-react",
         "lucide-react"
@@ -415,7 +436,7 @@
       "name": "chart",
       "type": "registry:ui",
       "title": "Chart",
-      "description": "Chart container wrapper and tooltip system configured for Recharts with OKLCH CSS variables.",
+      "description": "Chart component for Strider UI design system.",
       "dependencies": [
         "recharts"
       ],
@@ -432,7 +453,7 @@
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
-      "description": "Accessible toggle control with indeterminate state, theme accents, uniform labeling, and card mode.",
+      "description": "Checkbox component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-checkbox",
         "lucide-react"
@@ -450,7 +471,7 @@
       "name": "circular-progress",
       "type": "registry:ui",
       "title": "Circular Progress",
-      "description": "Radial progress indicator with customizable stroke widths, percentage text, and status colors.",
+      "description": "Circular Progress component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -465,7 +486,7 @@
       "name": "code-block",
       "type": "registry:ui",
       "title": "Code Block",
-      "description": "Syntax-highlighted code container with line numbers, language badge, and copy-to-clipboard button.",
+      "description": "Code Block component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -483,7 +504,7 @@
       "name": "collapsible",
       "type": "registry:ui",
       "title": "Collapsible",
-      "description": "Interactive disclosure panel that toggles visibility of collapsible content sections.",
+      "description": "Collapsible component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-collapsible"
       ],
@@ -500,7 +521,7 @@
       "name": "color-picker",
       "type": "registry:ui",
       "title": "Color Picker",
-      "description": "Hex/RGB color selector with preset swatches, native eye-dropper, and click-to-copy.",
+      "description": "Color Picker component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -522,7 +543,7 @@
       "name": "combobox",
       "type": "registry:ui",
       "title": "Combobox",
-      "description": "Searchable autocomplete dropdown with keyboard navigation, fuzzy filtering, and empty states.",
+      "description": "Combobox component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-popover",
         "lucide-react"
@@ -542,7 +563,7 @@
       "name": "command",
       "type": "registry:ui",
       "title": "Command",
-      "description": "Fast, composable command palette engine with hotkey bindings and categorized groups.",
+      "description": "Command component for Strider UI design system.",
       "dependencies": [
         "cmdk",
         "lucide-react"
@@ -563,7 +584,7 @@
       "name": "comment-thread",
       "type": "registry:ui",
       "title": "Comment Thread",
-      "description": "Contextual discussion threads with nested replies, emoji reactions, and thread resolution.",
+      "description": "Comment Thread component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -582,10 +603,31 @@
       ]
     },
     {
+      "name": "comparison-table",
+      "type": "registry:ui",
+      "title": "Comparison Table",
+      "description": "Multi-tier feature comparison matrix with category group headers,",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "components/ui/comparison-table.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/comparison-table.tsx"
+        }
+      ]
+    },
+    {
       "name": "confetti",
       "type": "registry:ui",
       "title": "Confetti",
-      "description": "Physics particle celebration cannon engine for milestone completions and onboarding wins.",
+      "description": "Confetti component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -601,10 +643,25 @@
       ]
     },
     {
+      "name": "container",
+      "type": "registry:ui",
+      "title": "Container",
+      "description": "Responsive max-width wrapper with standardized gutters.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/container.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/container.tsx"
+        }
+      ]
+    },
+    {
       "name": "context-menu",
       "type": "registry:ui",
       "title": "Context Menu",
-      "description": "Right-click context menu with nested submenus, checkbox items, and keyboard shortcuts.",
+      "description": "Context Menu component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-context-menu",
         "lucide-react"
@@ -624,7 +681,7 @@
       "name": "contrast-checker",
       "type": "registry:ui",
       "title": "Contrast Checker",
-      "description": "Real-time WCAG 2.2 luminance contrast ratio evaluator with AA/AAA pass and fail badges.",
+      "description": "Contrast Checker component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -640,10 +697,50 @@
       ]
     },
     {
+      "name": "cookie-consent",
+      "type": "registry:ui",
+      "title": "Cookie Consent",
+      "description": "Production-ready GDPR/CCPA cookie consent notification banner.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/ui/cookie-consent.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cookie-consent.tsx"
+        }
+      ]
+    },
+    {
+      "name": "copy-button",
+      "type": "registry:ui",
+      "title": "Copy Button",
+      "description": "Zero-boilerplate clipboard copy button with animated icon transition,",
+      "dependencies": [
+        "lucide-react",
+        "sonner"
+      ],
+      "registryDependencies": [
+        "button",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "components/ui/copy-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/copy-button.tsx"
+        }
+      ]
+    },
+    {
       "name": "countdown",
       "type": "registry:ui",
       "title": "Countdown",
-      "description": "Deluxe flip-clock and pill countdown timer with day/hour/minute/second intervals.",
+      "description": "Countdown component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -658,7 +755,7 @@
       "name": "credit-card-input",
       "type": "registry:ui",
       "title": "Credit Card Input",
-      "description": "PCI-compliant credit card payment input with live card brand detection and luhn validation.",
+      "description": "Credit Card Input component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -679,7 +776,7 @@
       "name": "cron-picker",
       "type": "registry:ui",
       "title": "Cron Picker",
-      "description": "Visual cron schedule builder with natural language human translation.",
+      "description": "Cron Picker component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -700,7 +797,7 @@
       "name": "currency-input",
       "type": "registry:ui",
       "title": "Currency Input",
-      "description": "Localized money and currency input with ISO currency code selector and live formatting.",
+      "description": "Currency Input component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -715,7 +812,7 @@
       "name": "data-table",
       "type": "registry:ui",
       "title": "Data Table",
-      "description": "Enterprise data grid with sorting, row selection, column toggling, filtering, and pagination.",
+      "description": "Data Table component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -738,7 +835,7 @@
       "name": "date-picker",
       "type": "registry:ui",
       "title": "Date Picker",
-      "description": "Single and range date picker input with popover calendar and formatted display.",
+      "description": "Date Picker component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-popover",
         "date-fns",
@@ -758,10 +855,27 @@
       ]
     },
     {
+      "name": "description-list",
+      "type": "registry:ui",
+      "title": "Description List",
+      "description": "Structured Key-Value Property List / Spec Card for customer data,",
+      "dependencies": [],
+      "registryDependencies": [
+        "copy-button"
+      ],
+      "files": [
+        {
+          "path": "components/ui/description-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/description-list.tsx"
+        }
+      ]
+    },
+    {
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
-      "description": "Accessible modal window overlay with customizable sizes, keyboard trap, and imperative service APIs.",
+      "description": "Dialog component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-dialog",
         "lucide-react"
@@ -779,7 +893,7 @@
       "name": "diff-viewer",
       "type": "registry:ui",
       "title": "Diff Viewer",
-      "description": "Side-by-side and unified git code diff comparison viewer with line addition/deletion highlights.",
+      "description": "Diff Viewer component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -794,7 +908,7 @@
       "name": "dock",
       "type": "registry:ui",
       "title": "Dock",
-      "description": "macOS-inspired application floating dock with proximity hover magnification and badge indicators.",
+      "description": "Dock component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -809,7 +923,7 @@
       "name": "document-preview",
       "type": "registry:ui",
       "title": "Document Preview",
-      "description": "In-app document and PDF viewer with zoom controls, page switching, and electronic seal.",
+      "description": "Document Preview component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -830,7 +944,7 @@
       "name": "drawer",
       "type": "registry:ui",
       "title": "Drawer",
-      "description": "Sliding panel drawer overlay emerging from any screen edge with responsive mobile bottom-sheet support.",
+      "description": "Drawer component for Strider UI design system.",
       "dependencies": [
         "vaul"
       ],
@@ -847,7 +961,7 @@
       "name": "dropdown-menu",
       "type": "registry:ui",
       "title": "Dropdown Menu",
-      "description": "Action menu triggered by button clicks with menu items, separators, and shortcuts.",
+      "description": "Dropdown Menu component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-dropdown-menu",
         "lucide-react"
@@ -867,7 +981,7 @@
       "name": "duration",
       "type": "registry:ui",
       "title": "Duration",
-      "description": "Time duration selector input supporting seconds, minutes, hours, and days.",
+      "description": "Duration component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -884,12 +998,28 @@
       ]
     },
     {
+      "name": "editable",
+      "type": "registry:ui",
+      "title": "Editable",
+      "description": "Click-to-edit inline text primitive with keyboard shortcuts (Enter to save, Esc to cancel).",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/editable.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/editable.tsx"
+        }
+      ]
+    },
+    {
       "name": "empty",
       "type": "registry:ui",
       "title": "Empty",
-      "description": "Empty state illustration placeholder with title, description, and action button slots.",
+      "description": "Quick shorthand helper component for standard empty states.",
       "dependencies": [
-        "class-variance-authority",
         "lucide-react"
       ],
       "registryDependencies": [],
@@ -905,7 +1035,7 @@
       "name": "facet-filter",
       "type": "registry:ui",
       "title": "Facet Filter",
-      "description": "Faceted multi-select filter popover with option counts, search filtering, and clear actions.",
+      "description": "Facet Filter component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -927,10 +1057,8 @@
       "name": "field",
       "type": "registry:ui",
       "title": "Field",
-      "description": "Semantic form field system supporting vertical, horizontal, and responsive layouts with error boundaries.",
-      "dependencies": [
-        "class-variance-authority"
-      ],
+      "description": "Field component for Strider UI design system.",
+      "dependencies": [],
       "registryDependencies": [
         "label",
         "separator"
@@ -947,7 +1075,7 @@
       "name": "file-uploader",
       "type": "registry:ui",
       "title": "File Uploader",
-      "description": "Drag-and-drop file upload zone with file type validation, preview thumbnails, and progress bars.",
+      "description": "File Uploader component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -967,7 +1095,7 @@
       "name": "filter-builder",
       "type": "registry:ui",
       "title": "Filter Builder",
-      "description": "Multi-rule SQL/query filter rule builder with AND/OR condition groups and operator selectors.",
+      "description": "Filter Builder component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -988,7 +1116,7 @@
       "name": "floating-action-menu",
       "type": "registry:ui",
       "title": "Floating Action Menu",
-      "description": "Expandable speed-dial floating action button with rotation physics and tooltip labels.",
+      "description": "Floating Action Menu component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1005,11 +1133,10 @@
       "name": "form",
       "type": "registry:ui",
       "title": "Form",
-      "description": "React Hook Form integration with validation schemas, field errors, and accessible labeling.",
+      "description": "Form component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-label",
-        "@radix-ui/react-slot",
-        "react-hook-form"
+        "@radix-ui/react-slot"
       ],
       "registryDependencies": [
         "label"
@@ -1026,7 +1153,7 @@
       "name": "form-control",
       "type": "registry:ui",
       "title": "Form Control",
-      "description": "P5 uniform labeling contract wrapper linking inputs to labels, descriptions, and errors.",
+      "description": "Encapsulates Principle P5 (Uniform Labeling Contract):",
       "dependencies": [
         "lucide-react"
       ],
@@ -1043,7 +1170,7 @@
       "name": "funnel-chart",
       "type": "registry:ui",
       "title": "Funnel Chart",
-      "description": "Multi-stage conversion funnel visualization with drop-off percentages and conversion metrics.",
+      "description": "Funnel Chart component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -1058,7 +1185,7 @@
       "name": "gauge",
       "type": "registry:ui",
       "title": "Gauge",
-      "description": "Radial speed/utilization gauge meter with needle indicator, danger zones, and min/max ranges.",
+      "description": "Gauge component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -1070,10 +1197,30 @@
       ]
     },
     {
+      "name": "global-command-palette",
+      "type": "registry:ui",
+      "title": "Global Command Palette",
+      "description": "Global Command Palette component for Strider UI design system.",
+      "dependencies": [
+        "lucide-react",
+        "sonner"
+      ],
+      "registryDependencies": [
+        "command"
+      ],
+      "files": [
+        {
+          "path": "components/ui/global-command-palette.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/global-command-palette.tsx"
+        }
+      ]
+    },
+    {
       "name": "heatmap",
       "type": "registry:ui",
       "title": "Heatmap",
-      "description": "Contribution activity grid heatmap with intensity color scales and tooltip inspections.",
+      "description": "Heatmap component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -1088,7 +1235,7 @@
       "name": "hover-card",
       "type": "registry:ui",
       "title": "Hover Card",
-      "description": "Preview popover card displaying rich preview content on cursor hover.",
+      "description": "Hover Card component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-hover-card"
       ],
@@ -1105,7 +1252,7 @@
       "name": "icon",
       "type": "registry:ui",
       "title": "Icon",
-      "description": "Lucide icon wrapper with standardized sizing and theme color token linkage.",
+      "description": "Dynamic icon component mapping name strings to Lucide icons.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1122,7 +1269,7 @@
       "name": "image-compare",
       "type": "registry:ui",
       "title": "Image Compare",
-      "description": "Interactive split-screen image slider for before-and-after visual comparisons.",
+      "description": "Image Compare component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1139,9 +1286,8 @@
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
-      "description": "Uniform text input adhering to P5 labeling contract with clearable and size variants.",
+      "description": "Input component for Strider UI design system.",
       "dependencies": [
-        "class-variance-authority",
         "lucide-react"
       ],
       "registryDependencies": [
@@ -1159,10 +1305,8 @@
       "name": "input-group",
       "type": "registry:ui",
       "title": "Input Group",
-      "description": "Compound input wrapper with attached button addons, dropdowns, and icon prefixes/suffixes.",
-      "dependencies": [
-        "class-variance-authority"
-      ],
+      "description": "Input Group component for Strider UI design system.",
+      "dependencies": [],
       "registryDependencies": [
         "button",
         "input",
@@ -1180,7 +1324,7 @@
       "name": "input-otp",
       "type": "registry:ui",
       "title": "Input Otp",
-      "description": "One-time password / 2FA pin code input with automatic digit advance and clipboard paste.",
+      "description": "Input Otp component for Strider UI design system.",
       "dependencies": [
         "input-otp",
         "lucide-react"
@@ -1198,10 +1342,9 @@
       "name": "item",
       "type": "registry:ui",
       "title": "Item",
-      "description": "Polymorphic list item with media, content, title, description, and actions slots.",
+      "description": "Item component for Strider UI design system.",
       "dependencies": [
-        "@radix-ui/react-slot",
-        "class-variance-authority"
+        "@radix-ui/react-slot"
       ],
       "registryDependencies": [
         "separator"
@@ -1218,7 +1361,7 @@
       "name": "json-tree",
       "type": "registry:ui",
       "title": "Json Tree",
-      "description": "Interactive expandable JSON tree viewer with type color coding and click-to-copy keys.",
+      "description": "Json Tree component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -1236,7 +1379,7 @@
       "name": "kanban-board",
       "type": "registry:ui",
       "title": "Kanban Board",
-      "description": "Multi-column task workflow board with WIP limits, priority badges, and quick-add tasks.",
+      "description": "Kanban Board component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -1258,7 +1401,7 @@
       "name": "kbd",
       "type": "registry:ui",
       "title": "Kbd",
-      "description": "Mechanical keyboard shortcut keycap badge with platform modifier symbol translations.",
+      "description": "Kbd component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -1273,7 +1416,7 @@
       "name": "kbd-shortcut-list",
       "type": "registry:ui",
       "title": "Kbd Shortcut List",
-      "description": "Categorized hotkey index sheet with stylized mechanical keycaps.",
+      "description": "Kbd Shortcut List component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1292,7 +1435,7 @@
       "name": "keyboard-shortcuts-dialog",
       "type": "registry:ui",
       "title": "Keyboard Shortcuts Dialog",
-      "description": "Global keyboard shortcuts modal cheat sheet with categorized bindings.",
+      "description": "Modal displaying accessible keyboard shortcuts organized by category.",
       "dependencies": [],
       "registryDependencies": [
         "dialog",
@@ -1310,7 +1453,7 @@
       "name": "label",
       "type": "registry:ui",
       "title": "Label",
-      "description": "Accessible form label primitive with required asterisk and disabled state handling.",
+      "description": "Label component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-label"
       ],
@@ -1327,7 +1470,7 @@
       "name": "loading-indicator",
       "type": "registry:ui",
       "title": "Loading Indicator",
-      "description": "Continuous indeterminate animated loading bar with theme accents.",
+      "description": "Loading Indicator component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -1342,7 +1485,7 @@
       "name": "loading-text",
       "type": "registry:ui",
       "title": "Loading Text",
-      "description": "Shimmering animated status loading message with step transitions.",
+      "description": "Loading Text component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [
         "spinner"
@@ -1359,7 +1502,7 @@
       "name": "log-viewer",
       "type": "registry:ui",
       "title": "Log Viewer",
-      "description": "Terminal-style streaming log console with log level filters, search, autoscroll, and ANSI colors.",
+      "description": "Log Viewer component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -1379,7 +1522,7 @@
       "name": "logo",
       "type": "registry:ui",
       "title": "Logo",
-      "description": "Strider brand SVG logo component with responsive size and monochrome/color variants.",
+      "description": "Logo component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -1394,9 +1537,8 @@
       "name": "markdown-editor",
       "type": "registry:ui",
       "title": "Markdown Editor",
-      "description": "Live dual-pane markdown editor with preview rendering, formatting toolbar, and table insertion.",
+      "description": "Markdown Editor component for Strider UI design system.",
       "dependencies": [
-        "@strider/ui",
         "lucide-react"
       ],
       "registryDependencies": [
@@ -1415,7 +1557,7 @@
       "name": "masonry-grid",
       "type": "registry:ui",
       "title": "Masonry Grid",
-      "description": "Responsive Pinterest-style masonry grid layout with dynamic column heights.",
+      "description": "Masonry Grid component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -1430,7 +1572,7 @@
       "name": "media-lightbox",
       "type": "registry:ui",
       "title": "Media Lightbox",
-      "description": "Full-screen media lightbox modal with image zoom, gallery slider, and caption overlay.",
+      "description": "Media Lightbox component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -1451,7 +1593,7 @@
       "name": "mention-input",
       "type": "registry:ui",
       "title": "Mention Input",
-      "description": "Text area with @user and #tag auto-completing trigger popup mentions.",
+      "description": "Mention Input component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [
         "avatar"
@@ -1468,7 +1610,7 @@
       "name": "menubar",
       "type": "registry:ui",
       "title": "Menubar",
-      "description": "Desktop application top navigation menu bar with nested submenu trees and accelerators.",
+      "description": "Menubar component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-menubar",
         "lucide-react"
@@ -1486,7 +1628,7 @@
       "name": "message-bubble",
       "type": "registry:ui",
       "title": "Message Bubble",
-      "description": "Chat conversation message bubble with sender meta, timestamp, and status ticks.",
+      "description": "Message Bubble component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -1506,7 +1648,7 @@
       "name": "metric-card",
       "type": "registry:ui",
       "title": "Metric Card",
-      "description": "Executive KPI card with sparkline charts, percentage trends, and secondary details.",
+      "description": "Metric Card component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1528,7 +1670,7 @@
       "name": "metric-compare",
       "type": "registry:ui",
       "title": "Metric Compare",
-      "description": "A/B metric comparison card with delta variance badges and change breakdown.",
+      "description": "Metric Compare component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1548,7 +1690,7 @@
       "name": "model-selector",
       "type": "registry:ui",
       "title": "Model Selector",
-      "description": "AI language model switcher dropdown with parameter limits, provider icons, and latency tags.",
+      "description": "Model Selector component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1568,7 +1710,7 @@
       "name": "multi-email-input",
       "type": "registry:ui",
       "title": "Multi Email Input",
-      "description": "Email chip tag input with regex RFC 5322 validation and duplicate detection.",
+      "description": "Chip-based multiple email input with RFC-compliant validation and tag removal.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1588,7 +1730,7 @@
       "name": "multi-select",
       "type": "registry:ui",
       "title": "Multi Select",
-      "description": "Multi-value selection dropdown with removable badges, select-all, and search filtering.",
+      "description": "Multi Select component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-popover",
         "lucide-react"
@@ -1609,10 +1751,9 @@
       "name": "navigation-menu",
       "type": "registry:ui",
       "title": "Navigation Menu",
-      "description": "Mega-menu navigation header with animated slide-in flyout panels.",
+      "description": "Navigation Menu component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-navigation-menu",
-        "class-variance-authority",
         "lucide-react"
       ],
       "registryDependencies": [],
@@ -1628,7 +1769,7 @@
       "name": "notification-center",
       "type": "registry:ui",
       "title": "Notification Center",
-      "description": "Full notification dropdown popover with badge counts, tabbed filters, and action handlers.",
+      "description": "Notification Center component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1650,7 +1791,7 @@
       "name": "notification-preferences",
       "type": "registry:ui",
       "title": "Notification Preferences",
-      "description": "Granular multi-channel notification matrix settings with toggle switches.",
+      "description": "Notification Preferences component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -1669,10 +1810,27 @@
       ]
     },
     {
+      "name": "number-input",
+      "type": "registry:ui",
+      "title": "Number Input",
+      "description": "Precision numeric input with steppers, keyboard shortcuts, and P5 form contract.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/number-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/number-input.tsx"
+        }
+      ]
+    },
+    {
       "name": "omni-search",
       "type": "registry:ui",
       "title": "Omni Search",
-      "description": "Universal spotlight search and command launcher with fuzzy filtering and categorized tabs.",
+      "description": "Omni Search component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -1693,7 +1851,7 @@
       "name": "org-chart-tree",
       "type": "registry:ui",
       "title": "Org Chart Tree",
-      "description": "Hierarchical company organization chart tree with expandable nodes and team avatars.",
+      "description": "Org Chart Tree component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1713,7 +1871,7 @@
       "name": "page-header",
       "type": "registry:ui",
       "title": "Page Header",
-      "description": "Standard page title banner with breadcrumb, action buttons, and description slots.",
+      "description": "Unified enterprise page header with breadcrumb navigation, badge, subtitle, and action button bar.",
       "dependencies": [],
       "registryDependencies": [
         "breadcrumb"
@@ -1730,7 +1888,7 @@
       "name": "pagination",
       "type": "registry:ui",
       "title": "Pagination",
-      "description": "Accessible pagination navigation controls with page numbers, jump-to-page, and row size selectors.",
+      "description": "Pagination component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1749,7 +1907,7 @@
       "name": "palette-generator",
       "type": "registry:ui",
       "title": "Palette Generator",
-      "description": "OKLCH two-axis color palette designer with contrast validation and CSS export.",
+      "description": "Palette Generator component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -1770,7 +1928,7 @@
       "name": "password-input",
       "type": "registry:ui",
       "title": "Password Input",
-      "description": "Secure password input with show/hide toggle and real-time zxcvbn strength indicator.",
+      "description": "Password Input component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1789,7 +1947,7 @@
       "name": "password-validator",
       "type": "registry:ui",
       "title": "Password Validator",
-      "description": "Visual checklist validating password requirements against enterprise security criteria.",
+      "description": "Password Validator component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1806,7 +1964,7 @@
       "name": "phone-input",
       "type": "registry:ui",
       "title": "Phone Input",
-      "description": "International telephone number input with country flag selector and E.164 formatting.",
+      "description": "Phone Input component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1826,7 +1984,7 @@
       "name": "pipeline-step",
       "type": "registry:ui",
       "title": "Pipeline Step",
-      "description": "Multi-stage CI/CD pipeline step tracker with status icons, elapsed time, and logs toggle.",
+      "description": "Pipeline Step component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1847,7 +2005,7 @@
       "name": "pivot-table",
       "type": "registry:ui",
       "title": "Pivot Table",
-      "description": "Multi-dimensional financial cross-tabulation matrix with subtotals, grand totals, and CSV export.",
+      "description": "Pivot Table component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -1868,7 +2026,7 @@
       "name": "popover",
       "type": "registry:ui",
       "title": "Popover",
-      "description": "Rich contextual popover overlay anchored to trigger elements with arrow indicator.",
+      "description": "Popover component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-popover"
       ],
@@ -1885,7 +2043,7 @@
       "name": "pricing-table",
       "type": "registry:ui",
       "title": "Pricing Table",
-      "description": "Tiered SaaS pricing comparison table with feature checklists, annual/monthly toggle, and CTAs.",
+      "description": "Pricing Table component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1905,10 +2063,9 @@
       "name": "progress",
       "type": "registry:ui",
       "title": "Progress",
-      "description": "Linear percentage progress bar with animated transitions, theme colors, and label slots.",
+      "description": "Progress component for Strider UI design system.",
       "dependencies": [
-        "@radix-ui/react-progress",
-        "class-variance-authority"
+        "@radix-ui/react-progress"
       ],
       "registryDependencies": [],
       "files": [
@@ -1920,31 +2077,10 @@
       ]
     },
     {
-      "name": "provider",
-      "type": "registry:ui",
-      "title": "Provider",
-      "description": "Root StriderUIProvider wrapping ThemeProvider, TooltipProvider, ImperativeDialog, and Toaster.",
-      "dependencies": [
-        "@radix-ui/react-tooltip",
-        "next-themes"
-      ],
-      "registryDependencies": [
-        "agentation",
-        "sonner"
-      ],
-      "files": [
-        {
-          "path": "components/ui/provider.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/provider.tsx"
-        }
-      ]
-    },
-    {
       "name": "pulse-badge",
       "type": "registry:ui",
       "title": "Pulse Badge",
-      "description": "Live heartbeat indicator badge with radiant radar ring pulse animation.",
+      "description": "Pulse Badge component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -1956,10 +2092,29 @@
       ]
     },
     {
+      "name": "qr-code",
+      "type": "registry:ui",
+      "title": "Qr Code",
+      "description": "Accessible, customizable SVG QR Code generator with logo slot and download.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/ui/qr-code.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/qr-code.tsx"
+        }
+      ]
+    },
+    {
       "name": "radio-group",
       "type": "registry:ui",
       "title": "Radio Group",
-      "description": "Radio button selection group with standard, vertical, and card option styles.",
+      "description": "Radio Group component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-radio-group",
         "lucide-react"
@@ -1977,7 +2132,7 @@
       "name": "rating",
       "type": "registry:ui",
       "title": "Rating",
-      "description": "Interactive star and emoji rating input with half-star precision and hover preview.",
+      "description": "Rating component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1994,7 +2149,7 @@
       "name": "resizable",
       "type": "registry:ui",
       "title": "Resizable",
-      "description": "Split pane resizable layout with draggable handles and min/max constraints.",
+      "description": "Resizable component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "react-resizable-panels"
@@ -2009,10 +2164,29 @@
       ]
     },
     {
+      "name": "responsive-dialog",
+      "type": "registry:ui",
+      "title": "Responsive Dialog",
+      "description": "Seamlessly adapts between a Radix Modal Dialog on desktop (≥768px) and a gesture-driven",
+      "dependencies": [],
+      "registryDependencies": [
+        "dialog",
+        "drawer",
+        "use-mobile"
+      ],
+      "files": [
+        {
+          "path": "components/ui/responsive-dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/responsive-dialog.tsx"
+        }
+      ]
+    },
+    {
       "name": "roadmap-gantt",
       "type": "registry:ui",
       "title": "Roadmap Gantt",
-      "description": "Product roadmap Gantt timeline with monthly tracks, milestone flags, and progress bars.",
+      "description": "Roadmap Gantt component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2033,7 +2207,7 @@
       "name": "score-badge",
       "type": "registry:ui",
       "title": "Score Badge",
-      "description": "Gamified circular compliance score ring with rank tiers and verification checkpoints.",
+      "description": "Score Badge component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2052,7 +2226,7 @@
       "name": "scroll-area",
       "type": "registry:ui",
       "title": "Scroll Area",
-      "description": "Custom cross-browser scrollbar container with smooth hover and auto-hide behaviors.",
+      "description": "Scroll Area component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-scroll-area"
       ],
@@ -2069,7 +2243,7 @@
       "name": "scroll-progress",
       "type": "registry:ui",
       "title": "Scroll Progress",
-      "description": "Fixed page top scroll progress bar tracking reading completion percentage.",
+      "description": "Scroll Progress component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -2084,7 +2258,7 @@
       "name": "search-bar",
       "type": "registry:ui",
       "title": "Search Bar",
-      "description": "Instant search input field with shortcut kbd badge and clear button.",
+      "description": "Search Bar component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2103,7 +2277,7 @@
       "name": "search-dialog",
       "type": "registry:ui",
       "title": "Search Dialog",
-      "description": "Global keyboard shortcut search and command palette dialog.",
+      "description": "Search Dialog component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2124,7 +2298,7 @@
       "name": "section-header",
       "type": "registry:ui",
       "title": "Section Header",
-      "description": "Content section divider header with title, subtitle, and inline action triggers.",
+      "description": "Section Header component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -2139,7 +2313,7 @@
       "name": "segmented-control",
       "type": "registry:ui",
       "title": "Segmented Control",
-      "description": "Sliding pill segmented tab switcher with keyboard navigation and icon support.",
+      "description": "Segmented Control component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -2154,7 +2328,7 @@
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
-      "description": "Accessible custom select dropdown adhering to P8 single-selection contract.",
+      "description": "Single selection component supporting both shorthand `options` prop and compound subcomponents.",
       "dependencies": [
         "@radix-ui/react-select",
         "lucide-react"
@@ -2174,7 +2348,7 @@
       "name": "separator",
       "type": "registry:ui",
       "title": "Separator",
-      "description": "Semantic visual divider line with horizontal/vertical orientations and optional text label.",
+      "description": "Separator component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-separator"
       ],
@@ -2191,7 +2365,7 @@
       "name": "service-status-grid",
       "type": "registry:ui",
       "title": "Service Status Grid",
-      "description": "Infrastructure uptime monitor with 90-day availability timeline pills and SLA health score.",
+      "description": "Service Status Grid component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2210,7 +2384,7 @@
       "name": "sheet",
       "type": "registry:ui",
       "title": "Sheet",
-      "description": "Side overlay drawer container with slide-in animations from top, right, bottom, or left.",
+      "description": "Sheet component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-dialog",
         "lucide-react"
@@ -2228,10 +2402,9 @@
       "name": "sidebar",
       "type": "registry:ui",
       "title": "Sidebar",
-      "description": "Enterprise collateral sidebar with collapsible sections, tooltips, rail mode, and mobile drawer.",
+      "description": "Sidebar component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-slot",
-        "class-variance-authority",
         "lucide-react"
       ],
       "registryDependencies": [
@@ -2254,7 +2427,7 @@
       "name": "signature-pad",
       "type": "registry:ui",
       "title": "Signature Pad",
-      "description": "HTML5 canvas electronic signature pad with smooth stroke smoothing and PNG/SVG export.",
+      "description": "Signature Pad component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2273,10 +2446,8 @@
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",
-      "description": "Animated placeholder skeleton loader for content loading states.",
-      "dependencies": [
-        "class-variance-authority"
-      ],
+      "description": "Skeleton component for Strider UI design system.",
+      "dependencies": [],
       "registryDependencies": [],
       "files": [
         {
@@ -2290,7 +2461,7 @@
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",
-      "description": "Range and single value thumb slider with touch support, tooltip value hints, and tick marks.",
+      "description": "Slider component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-slider"
       ],
@@ -2307,7 +2478,7 @@
       "name": "snippet",
       "type": "registry:ui",
       "title": "Snippet",
-      "description": "Inline code snippet pill with one-click copy to clipboard and toast feedback.",
+      "description": "Snippet component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -2325,9 +2496,8 @@
       "name": "sonner",
       "type": "registry:ui",
       "title": "Sonner",
-      "description": "Sonner toast notification provider wrapper with OKLCH theme styling.",
+      "description": "Sonner component for Strider UI design system.",
       "dependencies": [
-        "next-themes",
         "sonner"
       ],
       "registryDependencies": [],
@@ -2343,7 +2513,7 @@
       "name": "sparkline",
       "type": "registry:ui",
       "title": "Sparkline",
-      "description": "Compact inline SVG micro-chart showing data trends without axis clutter.",
+      "description": "Sparkline component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -2358,10 +2528,8 @@
       "name": "spinner",
       "type": "registry:ui",
       "title": "Spinner",
-      "description": "Circular SVG loading spinner with size and theme color variants.",
-      "dependencies": [
-        "class-variance-authority"
-      ],
+      "description": "Spinner component for Strider UI design system.",
+      "dependencies": [],
       "registryDependencies": [],
       "files": [
         {
@@ -2375,7 +2543,7 @@
       "name": "split-button",
       "type": "registry:ui",
       "title": "Split Button",
-      "description": "Primary action button coupled with secondary dropdown options menu.",
+      "description": "Split Button component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2392,10 +2560,25 @@
       ]
     },
     {
+      "name": "stack",
+      "type": "registry:ui",
+      "title": "Stack",
+      "description": "Responsive CSS Grid container with fixed column counts or auto-fill responsive widths.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/stack.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stack.tsx"
+        }
+      ]
+    },
+    {
       "name": "stepper",
       "type": "registry:ui",
       "title": "Stepper",
-      "description": "Multi-step onboarding wizard progress stepper with completed, active, and pending states.",
+      "description": "Stepper component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2412,7 +2595,7 @@
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
-      "description": "Toggle switch control with custom sizing and theme color accents.",
+      "description": "Switch component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-switch"
       ],
@@ -2429,7 +2612,7 @@
       "name": "table",
       "type": "registry:ui",
       "title": "Table",
-      "description": "Stylized HTML table component primitives with striped rows, sticky headers, and hover highlights.",
+      "description": "Table component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -2444,7 +2627,7 @@
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
-      "description": "Accessible tabbed interface supporting line, enclosed, and subtle pill variants.",
+      "description": "Tabs component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-tabs"
       ],
@@ -2461,7 +2644,7 @@
       "name": "tag-input",
       "type": "registry:ui",
       "title": "Tag Input",
-      "description": "Interactive keyword tag pill input with autocomplete suggestions and keyboard delete.",
+      "description": "Tag Input component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [
         "badge"
@@ -2478,7 +2661,7 @@
       "name": "terminal-emulator",
       "type": "registry:ui",
       "title": "Terminal Emulator",
-      "description": "Interactive browser terminal CLI emulator with command history, output streaming, and clear.",
+      "description": "Terminal Emulator component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -2496,7 +2679,7 @@
       "name": "text-editor",
       "type": "registry:ui",
       "title": "Text Editor",
-      "description": "Rich WYSIWYG text editor toolbar supporting headings, formatting, links, and lists.",
+      "description": "Markdown / rich formatting text editor with interactive toolbar and live markdown preview.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2516,10 +2699,8 @@
       "name": "textarea",
       "type": "registry:ui",
       "title": "Textarea",
-      "description": "Auto-growing multi-line text input with character counter and error states.",
-      "dependencies": [
-        "class-variance-authority"
-      ],
+      "description": "Textarea component for Strider UI design system.",
+      "dependencies": [],
       "registryDependencies": [
         "form-control"
       ],
@@ -2535,10 +2716,9 @@
       "name": "theme-toggle",
       "type": "registry:ui",
       "title": "Theme Toggle",
-      "description": "Light, dark, and system theme switcher dropdown and button toggle with smooth icon transitions.",
+      "description": "Versatile Light / Dark / System theme switcher for Strider UI.",
       "dependencies": [
-        "lucide-react",
-        "next-themes"
+        "lucide-react"
       ],
       "registryDependencies": [
         "button",
@@ -2557,7 +2737,7 @@
       "name": "time-picker",
       "type": "registry:ui",
       "title": "Time Picker",
-      "description": "Time selector input with 12/24 hour modes, minute steps, and AM/PM toggle.",
+      "description": "Time Picker component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2577,7 +2757,7 @@
       "name": "timeline",
       "type": "registry:ui",
       "title": "Timeline",
-      "description": "Vertical event timeline with status dots, connector lines, and time-stamped activity cards.",
+      "description": "Timeline component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2594,10 +2774,9 @@
       "name": "toast",
       "type": "registry:ui",
       "title": "Toast",
-      "description": "Floating toast notification primitive with action buttons and dismiss timers.",
+      "description": "Toast component for Strider UI design system.",
       "dependencies": [
         "@radix-ui/react-toast",
-        "class-variance-authority",
         "lucide-react"
       ],
       "registryDependencies": [],
@@ -2613,7 +2792,7 @@
       "name": "toaster",
       "type": "registry:ui",
       "title": "Toaster",
-      "description": "Toast notification container viewport managing active toast queues.",
+      "description": "Toaster component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [
         "toast"
@@ -2630,10 +2809,9 @@
       "name": "toggle",
       "type": "registry:ui",
       "title": "Toggle",
-      "description": "Two-state icon toggle button with pressed and unpressed variants.",
+      "description": "Toggle component for Strider UI design system.",
       "dependencies": [
-        "@radix-ui/react-toggle",
-        "class-variance-authority"
+        "@radix-ui/react-toggle"
       ],
       "registryDependencies": [],
       "files": [
@@ -2648,10 +2826,9 @@
       "name": "toggle-group",
       "type": "registry:ui",
       "title": "Toggle Group",
-      "description": "Single or multiple toggle button group for toolbars and state switches.",
+      "description": "Toggle Group component for Strider UI design system.",
       "dependencies": [
-        "@radix-ui/react-toggle-group",
-        "class-variance-authority"
+        "@radix-ui/react-toggle-group"
       ],
       "registryDependencies": [
         "toggle"
@@ -2668,7 +2845,7 @@
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
-      "description": "Accessible hover tooltip popup with micro-animations and custom delay times.",
+      "description": "High-level shorthand wrapper or Compound Component Root.",
       "dependencies": [
         "@radix-ui/react-tooltip"
       ],
@@ -2687,7 +2864,7 @@
       "name": "top-list",
       "type": "registry:ui",
       "title": "Top List",
-      "description": "Leaderboard ranking widget showing top items with avatars, change indicators, and metric values.",
+      "description": "Top List component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2706,7 +2883,7 @@
       "name": "tour",
       "type": "registry:ui",
       "title": "Tour",
-      "description": "Guided product tour walkthrough with anchored spotlight popovers and step navigation.",
+      "description": "Tour component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2725,7 +2902,7 @@
       "name": "transfer-list",
       "type": "registry:ui",
       "title": "Transfer List",
-      "description": "Dual-box transfer list for moving items between source and target buckets with search.",
+      "description": "Transfer List component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2745,7 +2922,7 @@
       "name": "tree",
       "type": "registry:ui",
       "title": "Tree",
-      "description": "Hierarchical folder and file tree directory with expandable branches and selection.",
+      "description": "Tree component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2764,7 +2941,7 @@
       "name": "treemap",
       "type": "registry:ui",
       "title": "Treemap",
-      "description": "Nested hierarchical treemap rectangle chart with proportional area sizing.",
+      "description": "Treemap component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -2779,7 +2956,7 @@
       "name": "trend",
       "type": "registry:ui",
       "title": "Trend",
-      "description": "Upward/downward metric trend indicator with percentage change and color coding.",
+      "description": "Trend component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2796,7 +2973,7 @@
       "name": "two-factor-setup",
       "type": "registry:ui",
       "title": "Two Factor Setup",
-      "description": "Interactive 2FA setup wizard with QR code generation, manual entry key, and recovery codes.",
+      "description": "Two Factor Setup component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"
@@ -2815,34 +2992,17 @@
       ]
     },
     {
-      "name": "use-mobile",
+      "name": "typography",
       "type": "registry:ui",
-      "title": "Use Mobile",
-      "description": "React hook detecting mobile viewport breakpoints (<768px).",
+      "title": "Typography",
+      "description": "Typographic heading primitive with fluid scales and OKLCH color enforcement.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
         {
-          "path": "components/ui/use-mobile.tsx",
+          "path": "components/ui/typography.tsx",
           "type": "registry:ui",
-          "target": "components/ui/use-mobile.tsx"
-        }
-      ]
-    },
-    {
-      "name": "use-toast",
-      "type": "registry:ui",
-      "title": "Use Toast",
-      "description": "React state hook and dispatcher for managing imperative toast notifications.",
-      "dependencies": [],
-      "registryDependencies": [
-        "toast"
-      ],
-      "files": [
-        {
-          "path": "components/ui/use-toast.ts",
-          "type": "registry:ui",
-          "target": "components/ui/use-toast.ts"
+          "target": "components/ui/typography.tsx"
         }
       ]
     },
@@ -2850,7 +3010,7 @@
       "name": "user-menu",
       "type": "registry:ui",
       "title": "User Menu",
-      "description": "Authenticated user profile dropdown trigger with account navigation and logout action.",
+      "description": "User Menu component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2870,7 +3030,7 @@
       "name": "virtual-list",
       "type": "registry:ui",
       "title": "Virtual List",
-      "description": "High-throughput 60FPS virtual scroll list viewport engine with search filtering.",
+      "description": "Virtual List component for Strider UI design system.",
       "dependencies": [
         "lucide-react"
       ],
@@ -2890,7 +3050,7 @@
       "name": "watermark",
       "type": "registry:ui",
       "title": "Watermark",
-      "description": "Security background watermark pattern overlay protecting sensitive dashboard documents.",
+      "description": "Watermark component for Strider UI design system.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -2905,7 +3065,7 @@
       "name": "webhook-tester",
       "type": "registry:ui",
       "title": "Webhook Tester",
-      "description": "Endpoint dispatcher simulator with event type switcher, JSON payload editor, and response inspector.",
+      "description": "Webhook Tester component for Strider UI design system.",
       "dependencies": [
         "lucide-react",
         "sonner"

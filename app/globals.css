@@ -496,4 +496,116 @@
   .mobile-nav-safe {
     padding-bottom: env(safe-area-inset-bottom, 0);
   }
+
+  /* No Scrollbar Utility */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Ultra-Thin Micro Scrollbar (for codeblocks, modals & dropdowns) */
+  .custom-scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  .custom-scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .custom-scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar-thin::-webkit-scrollbar-thumb {
+    background: color-mix(in oklch, var(--ink-muted) 25%, transparent);
+    border-radius: 9999px;
+  }
+  .custom-scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: var(--brand-solid);
+  }
+}
+
+/* ==========================================================================
+   Strider UI Premium Adaptive Custom Scrollbar Engine
+   ========================================================================== */
+
+/* 1. Eliminate all native OS scrollbar buttons, arrows (▲ ▼ ◄ ►), and resize grippers */
+::-webkit-scrollbar-button,
+*::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+::-webkit-resizer,
+*::-webkit-resizer {
+  display: none !important;
+  background: transparent !important;
+}
+
+/* 2. WebKit & Chromium Custom Scrollbars (Chrome, Safari, Edge, Arc, Brave) */
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
+  background: transparent !important;
+  border-radius: 9999px !important;
+}
+
+::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+  background: rgba(140, 145, 155, 0.35) !important;
+  border-radius: 9999px !important;
+  border: 1px solid transparent !important;
+  background-clip: padding-box !important;
+  transition: background-color 150ms ease !important;
+}
+
+::-webkit-scrollbar-thumb:hover,
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-solid) !important;
+}
+
+::-webkit-scrollbar-thumb:active,
+*::-webkit-scrollbar-thumb:active {
+  background: var(--brand-solid-hover, var(--brand-solid)) !important;
+}
+
+::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-corner {
+  background: transparent !important;
+}
+
+/* 3. Dark Mode Custom Scrollbars */
+.dark ::-webkit-scrollbar-thumb,
+.dark *::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22) !important;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover,
+.dark *::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-solid) !important;
+}
+
+.dark ::-webkit-scrollbar-thumb:active,
+.dark *::-webkit-scrollbar-thumb:active {
+  background: var(--brand-solid) !important;
+}
+
+/* 4. Firefox Fallback (only for Firefox where ::-webkit-scrollbar is not available) */
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(140, 145, 155, 0.35) transparent;
+  }
+  .dark * {
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+  }
 }
